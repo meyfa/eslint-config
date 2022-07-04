@@ -1,0 +1,5 @@
+extends: 'standard-with-typescript'
+rules:
+  'import/extensions': ['error', 'always']
+parserOptions:
+  project: './tsconfig.json'
