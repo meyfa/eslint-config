@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/meyfa/eslint-config/compare/v1.0.0...v1.0.1) (2022-07-04)
+
+
+### Documentation
+
+* **readme:** Add usage info ([73ba725](https://github.com/meyfa/eslint-config/commit/73ba7257c118aab2c5af07a8836efe9e2f0972d8))
+
 ## [1.0.0](https://github.com/meyfa/eslint-config/compare/v1.0.0...v1.0.0) (2022-07-04)
 
 
