@@ -9,7 +9,7 @@ ESLint config for personal TypeScript projects. It uses the RushStack patch to r
 Install ESLint, as well as this package (`-DE` means `--save-dev --save-exact`):
 
 ```sh
-npm install -DE eslint@7 @meyfa/eslint-config
+npm install -DE eslint@8 @meyfa/eslint-config
 ```
 
 Then in the `.eslintrc.yml`:
