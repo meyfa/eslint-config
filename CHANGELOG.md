@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/meyfa/eslint-config/compare/v1.0.1...v2.0.0) (2022-07-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Require ESLint 8 and update other dependencies (#13)
+
+### Features
+
+* Require ESLint 8 and update other dependencies ([#13](https://github.com/meyfa/eslint-config/issues/13)) ([deb46fe](https://github.com/meyfa/eslint-config/commit/deb46fe47c2917cc64b38aff1fdb9d6eefaf7d9c))
+
 ## [1.0.1](https://github.com/meyfa/eslint-config/compare/v1.0.0...v1.0.1) (2022-07-04)
 
 
