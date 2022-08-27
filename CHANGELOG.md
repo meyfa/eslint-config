@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/meyfa/eslint-config/compare/v2.0.1...v2.0.2) (2022-08-27)
+
+
+### Bug Fixes
+
+* Lockfile maintenance ([#24](https://github.com/meyfa/eslint-config/issues/24)) ([8af0f98](https://github.com/meyfa/eslint-config/commit/8af0f980ec30c9eb044d6783e04e8fd3422812e7))
+
 ## [2.0.1](https://github.com/meyfa/eslint-config/compare/v2.0.0...v2.0.1) (2022-08-27)
 
 
