@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.2](https://github.com/meyfa/eslint-config/compare/v2.1.1...v2.1.2) (2022-11-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v5.43.0 ([#43](https://github.com/meyfa/eslint-config/issues/43)) ([45753f0](https://github.com/meyfa/eslint-config/commit/45753f0515e56dd9e2176cc85ff70ed459be5582))
+* **deps:** update dependency eslint-plugin-n to v15.5.1 ([#49](https://github.com/meyfa/eslint-config/issues/49)) ([4814c66](https://github.com/meyfa/eslint-config/commit/4814c6604a76bbc84a7c5db1a2405cf39066c498))
+* **deps:** update dependency eslint-plugin-promise to v6.1.0 ([#44](https://github.com/meyfa/eslint-config/issues/44)) ([ea3e544](https://github.com/meyfa/eslint-config/commit/ea3e5444de429a1b435680158de7dede77d08d6c))
+* **deps:** update dependency eslint-plugin-promise to v6.1.1 ([#47](https://github.com/meyfa/eslint-config/issues/47)) ([eaaf32b](https://github.com/meyfa/eslint-config/commit/eaaf32b054233b3874f8a5fb76a18c299239c866))
+
 ## [2.1.1](https://github.com/meyfa/eslint-config/compare/v2.1.0...v2.1.1) (2022-10-03)
 
 
