@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.0.0](https://github.com/meyfa/eslint-config/compare/v2.1.2...v3.0.0) (2022-12-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency eslint-config-standard-with-typescript to v24 ([#57](https://github.com/meyfa/eslint-config/issues/57))
+
+### Bug Fixes
+
+* Allow extensionless imports from NPM packages ([#58](https://github.com/meyfa/eslint-config/issues/58)) ([3fa074c](https://github.com/meyfa/eslint-config/commit/3fa074c9a6379b017f8986d63cbb4d6c245a878e))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v5.47.1 ([#52](https://github.com/meyfa/eslint-config/issues/52)) ([8840b27](https://github.com/meyfa/eslint-config/commit/8840b27feb9940ee3ba6750da6719736b62c0740))
+* **deps:** update dependency eslint-config-standard-with-typescript to v24 ([#57](https://github.com/meyfa/eslint-config/issues/57)) ([13caa44](https://github.com/meyfa/eslint-config/commit/13caa44cc8e46255d3df489a0e33445bbccd86f7))
+* **deps:** update dependency eslint-plugin-n to v15.6.0 ([#55](https://github.com/meyfa/eslint-config/issues/55)) ([6d27c40](https://github.com/meyfa/eslint-config/commit/6d27c404f1545300f35492ca0f53c8cb6441556d))
+
 ## [2.1.2](https://github.com/meyfa/eslint-config/compare/v2.1.1...v2.1.2) (2022-11-21)
 
 
