@@ -5,7 +5,8 @@ export = {
   extends: 'standard-with-typescript',
   rules: {
     // ES modules require a file extension on every import.
-    'import/extensions': ['error', 'always']
+    // NPM packages should be exempted. For example, we want to allow extensionless imports from 'preact/hooks'.
+    'import/extensions': ['error', 'always', { ignorePackages: true }]
   },
   overrides: [
     {
