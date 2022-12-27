@@ -1,5 +1,5 @@
 extends: 'standard-with-typescript'
 rules:
-  'import/extensions': ['error', 'always']
+  'import/extensions': ['error', 'always', { ignorePackages: true }]
 parserOptions:
   project: './tsconfig.json'
