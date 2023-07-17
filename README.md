@@ -24,8 +24,10 @@ That's it!
 
 ## Rules
 
-This package provides all the rules from [eslint-config-standard-with-typescript](https://github.com/standard/eslint-config-standard-with-typescript/).
-It customizes some things for files that match the glob `test/**/*` to work better with Mocha/Chai.
+This package provides all the rules from [eslint-config-standard-with-typescript](https://github.com/standard/eslint-config-standard-with-typescript/)
+with a few changes.
+For example, it customizes some things for files that match the glob `test/**/*` to work better with Mocha/Chai,
+and disables some impractical defaults.
 
 The main reason this package exists is to avoid having to install all peer dependencies of
 eslint-config-standard-with-typescript.
