@@ -1,5 +1,22 @@
 # Changelog
 
+## [4.0.0](https://github.com/meyfa/eslint-config/compare/v3.0.1...v4.0.0) (2023-07-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update eslint-config-standard-with-typescript to v36 ([#95](https://github.com/meyfa/eslint-config/issues/95))
+
+### Features
+
+* Update eslint-config-standard-with-typescript to v36 ([#95](https://github.com/meyfa/eslint-config/issues/95)) ([a46e623](https://github.com/meyfa/eslint-config/commit/a46e623f84b38fed48b38594ddd22f1f5718ec54))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rushstack/eslint-patch to v1.3.2 ([#86](https://github.com/meyfa/eslint-config/issues/86)) ([e7cbc0d](https://github.com/meyfa/eslint-config/commit/e7cbc0d790d7275c1f2a46686421e46998b91bc7))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v5.62.0 ([#84](https://github.com/meyfa/eslint-config/issues/84)) ([534b910](https://github.com/meyfa/eslint-config/commit/534b910fa58652baf6d44e2c3d385123d960eeec))
+
 ## [3.0.1](https://github.com/meyfa/eslint-config/compare/v3.0.0...v3.0.1) (2023-04-20)
 
 
