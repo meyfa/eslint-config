@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/meyfa/eslint-config/compare/v4.0.0...v4.0.1) (2023-07-23)
+
+
+### Miscellaneous Chores
+
+* Publish with provenance ([#97](https://github.com/meyfa/eslint-config/issues/97)) ([181f180](https://github.com/meyfa/eslint-config/commit/181f18049020ade5cf0f58003ac919b60baae671))
+
 ## [4.0.0](https://github.com/meyfa/eslint-config/compare/v3.0.1...v4.0.0) (2023-07-17)
 
 
