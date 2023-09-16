@@ -3,10 +3,38 @@ require('@rushstack/eslint-patch/modern-module-resolution.js')
 
 export = {
   extends: 'standard',
+  plugins: ['unicorn'],
   rules: {
     // ES modules require a file extension on every import.
     // NPM packages should be exempted. For example, we want to allow extensionless imports from 'preact/hooks'.
-    'import/extensions': ['error', 'always', { ignorePackages: true }]
+    'import/extensions': ['error', 'always', { ignorePackages: true }],
+    // Prefer 'node:' protocol imports for Node.js built-in modules.
+    'unicorn/prefer-node-protocol': 'error',
+    // Enforce correct Error subclassing.
+    'unicorn/custom-error-definition': 'error',
+    // Require Array.isArray() instead of instanceof Array.
+    'unicorn/no-instanceof-array': 'error',
+    // Disallow comparing undefined using typeof.
+    'unicorn/no-typeof-undefined': 'error',
+    // Disallow useless fallback when spreading in object literals.
+    'unicorn/no-useless-fallback-in-spread': 'error',
+    // Prefer .at() method for index access and String#charAt().
+    'unicorn/prefer-at': 'error',
+    // Prefer Date.now() to get the number of milliseconds since the Unix Epoch.
+    'unicorn/prefer-date-now': 'error',
+    // Prefer Number static properties over global ones.
+    'unicorn/prefer-number-properties': [
+      'error',
+      { checkInfinity: false }
+    ],
+    // Prefer String#slice() over String#substr() and String#substring().
+    'unicorn/prefer-string-slice': 'error',
+    // Enforce using the separator argument with Array#join().
+    'unicorn/require-array-join-separator': 'error',
+    // Require new when throwing an error.
+    'unicorn/throw-new-error': 'error',
+    // Enforce the consistent use of the radix argument when using parseInt().
+    radix: 'error'
   },
   overrides: [
     {
