@@ -1,6 +1,20 @@
 extends: 'standard'
+plugins:
+  - unicorn
 rules:
   'import/extensions': ['error', 'always', { ignorePackages: true }]
+  'unicorn/prefer-node-protocol': 'error'
+  'unicorn/custom-error-definition': 'error'
+  'unicorn/no-instanceof-array': 'error'
+  'unicorn/no-typeof-undefined': 'error'
+  'unicorn/no-useless-fallback-in-spread': 'error'
+  'unicorn/prefer-at': 'error'
+  'unicorn/prefer-date-now': 'error'
+  'unicorn/prefer-number-properties': ['error', { checkInfinity: false }]
+  'unicorn/prefer-string-slice': 'error'
+  'unicorn/require-array-join-separator': 'error'
+  'unicorn/throw-new-error': 'error'
+  radix: 'error'
 overrides:
   - files: ['*.ts', '*.tsx']
     extends: 'standard-with-typescript'
