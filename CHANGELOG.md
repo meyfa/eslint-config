@@ -1,5 +1,20 @@
 # Changelog
 
+## [5.0.1](https://github.com/meyfa/eslint-config/compare/v5.0.0...v5.0.1) (2024-01-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rushstack/eslint-patch to v1.5.0 ([#121](https://github.com/meyfa/eslint-config/issues/121)) ([a46bd23](https://github.com/meyfa/eslint-config/commit/a46bd23a4982d99742cc222997f4f482a3b9418c))
+* **deps:** update dependency @rushstack/eslint-patch to v1.5.1 ([#124](https://github.com/meyfa/eslint-config/issues/124)) ([c012529](https://github.com/meyfa/eslint-config/commit/c01252969fecc33ae28ecaef08c9ea8d15604cf2))
+* **deps:** update dependency @rushstack/eslint-patch to v1.6.1 ([#137](https://github.com/meyfa/eslint-config/issues/137)) ([6890ba2](https://github.com/meyfa/eslint-config/commit/6890ba25c99c2c872972e55e87e0c37c8e12be73))
+* **deps:** update dependency eslint-plugin-import to v2.29.0 ([#130](https://github.com/meyfa/eslint-config/issues/130)) ([8625333](https://github.com/meyfa/eslint-config/commit/8625333bef321def0ae6ade818d7daefcd36fbc9))
+* **deps:** update dependency eslint-plugin-import to v2.29.1 ([#142](https://github.com/meyfa/eslint-config/issues/142)) ([072fa15](https://github.com/meyfa/eslint-config/commit/072fa1542a160e8ddb0f4fb82dd37a95a08e5c4a))
+* **deps:** update dependency eslint-plugin-n to v16.3.1 ([#127](https://github.com/meyfa/eslint-config/issues/127)) ([e1feb1c](https://github.com/meyfa/eslint-config/commit/e1feb1cabebb5a8bcfa091ee9501d5d0937aa7a1))
+* **deps:** update dependency eslint-plugin-n to v16.6.0 ([#141](https://github.com/meyfa/eslint-config/issues/141)) ([71b6fd3](https://github.com/meyfa/eslint-config/commit/71b6fd3208b6cae9fecee6a36c0c8d04cf50d03e))
+* **deps:** update dependency eslint-plugin-unicorn to v49 ([#132](https://github.com/meyfa/eslint-config/issues/132)) ([c05af9a](https://github.com/meyfa/eslint-config/commit/c05af9a5383d6aa846f83e4afbe50a0367597ff2))
+* **deps:** update dependency eslint-plugin-unicorn to v50 ([#144](https://github.com/meyfa/eslint-config/issues/144)) ([16b2e2b](https://github.com/meyfa/eslint-config/commit/16b2e2bcfc445c7f2d3e66416cc8a578a2af4f8d))
+
 ## [5.0.0](https://github.com/meyfa/eslint-config/compare/v4.0.1...v5.0.0) (2023-09-16)
 
 
