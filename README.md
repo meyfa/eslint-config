@@ -20,7 +20,13 @@ parserOptions:
   project: './tsconfig.eslint.json'
 ```
 
-That's it!
+That's it! If the project requires JSDoc for some files, add the following to the `.eslintrc.yml`:
+
+```yml
+overrides:
+  - files: ['src/**/*.ts']
+    extends: '@meyfa/eslint-config/jsdoc'
+```
 
 ## Rules
 
