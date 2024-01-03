@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.1.0](https://github.com/meyfa/eslint-config/compare/v5.0.1...v5.1.0) (2024-01-03)
+
+
+### Features
+
+* Add 'jsdoc' sub-config ([#146](https://github.com/meyfa/eslint-config/issues/146)) ([83314bb](https://github.com/meyfa/eslint-config/commit/83314bbead581e23e5fb1c914daaadd8ca042557))
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-plugin-jsdoc to v48.0.2 ([#147](https://github.com/meyfa/eslint-config/issues/147)) ([1de5b2f](https://github.com/meyfa/eslint-config/commit/1de5b2fda892f2f3203abc99dbe9478c3885f12f))
+* **deps:** update dependency eslint-plugin-n to v16.6.1 ([#145](https://github.com/meyfa/eslint-config/issues/145)) ([c86535a](https://github.com/meyfa/eslint-config/commit/c86535aa38b90f6b776caef5d5bcd0bed8949c99))
+
 ## [5.0.1](https://github.com/meyfa/eslint-config/compare/v5.0.0...v5.0.1) (2024-01-01)
 
 
