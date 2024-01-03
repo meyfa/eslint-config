@@ -3,8 +3,16 @@
   "version": "5.0.1",
   "description": "ESLint config for personal TypeScript projects.",
   "type": "commonjs",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./jsdoc": {
+      "types": "./dist/jsdoc.d.ts",
+      "default": "./dist/jsdoc.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -39,6 +47,7 @@
     "eslint-config-standard": "17.1.0",
     "eslint-config-standard-with-typescript": "36.1.0",
     "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-jsdoc": "48.0.1",
     "eslint-plugin-n": "16.6.0",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-unicorn": "50.0.1"
