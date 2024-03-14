@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.1.1](https://github.com/meyfa/eslint-config/compare/v5.1.0...v5.1.1) (2024-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rushstack/eslint-patch to v1.7.0 ([#151](https://github.com/meyfa/eslint-config/issues/151)) ([bc84df2](https://github.com/meyfa/eslint-config/commit/bc84df26911c130dfbe3059607d90b5aac9f8eaf))
+* **deps:** update dependency eslint-plugin-jsdoc to v48.2.1 ([#154](https://github.com/meyfa/eslint-config/issues/154)) ([3d7c49e](https://github.com/meyfa/eslint-config/commit/3d7c49e7b4fa624c88825d220127adb053b0a1fa))
+* **deps:** update dependency eslint-plugin-n to v16.6.2 ([#150](https://github.com/meyfa/eslint-config/issues/150)) ([1d96acc](https://github.com/meyfa/eslint-config/commit/1d96acca8bec51e8139eb71665de093206bdc3dd))
+* **deps:** update dependency eslint-plugin-unicorn to v51 ([#156](https://github.com/meyfa/eslint-config/issues/156)) ([8da39da](https://github.com/meyfa/eslint-config/commit/8da39da232f9245f35bf96281843212860d7d2a3))
+
 ## [5.1.0](https://github.com/meyfa/eslint-config/compare/v5.0.1...v5.1.0) (2024-01-03)
 
 
