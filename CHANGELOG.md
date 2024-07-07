@@ -1,5 +1,29 @@
 # Changelog
 
+## [6.0.0](https://github.com/meyfa/eslint-config/compare/v5.1.0...v6.0.0) (2024-07-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency eslint-plugin-unicorn to v54 ([#173](https://github.com/meyfa/eslint-config/issues/173))
+
+### Bug Fixes
+
+* **deps:** update dependency @rushstack/eslint-patch to v1.10.1 ([#160](https://github.com/meyfa/eslint-config/issues/160)) ([3343f33](https://github.com/meyfa/eslint-config/commit/3343f3395fbc5e6001d9d32f3e1a958f9b92fe37))
+* **deps:** update dependency @rushstack/eslint-patch to v1.10.3 ([#169](https://github.com/meyfa/eslint-config/issues/169)) ([88a0a0a](https://github.com/meyfa/eslint-config/commit/88a0a0aae1529a99b62fc09a6c031a96ab37626e))
+* **deps:** update dependency @rushstack/eslint-patch to v1.7.0 ([#151](https://github.com/meyfa/eslint-config/issues/151)) ([bc84df2](https://github.com/meyfa/eslint-config/commit/bc84df26911c130dfbe3059607d90b5aac9f8eaf))
+* **deps:** update dependency @rushstack/eslint-patch to v1.7.2 ([#153](https://github.com/meyfa/eslint-config/issues/153)) ([3cf991b](https://github.com/meyfa/eslint-config/commit/3cf991baca102b028bc0fe099a415bdbd153519f))
+* **deps:** update dependency eslint-plugin-jsdoc to v48.2.1 ([#154](https://github.com/meyfa/eslint-config/issues/154)) ([3d7c49e](https://github.com/meyfa/eslint-config/commit/3d7c49e7b4fa624c88825d220127adb053b0a1fa))
+* **deps:** update dependency eslint-plugin-jsdoc to v48.2.2 ([#162](https://github.com/meyfa/eslint-config/issues/162)) ([23e235b](https://github.com/meyfa/eslint-config/commit/23e235b5436d00101d5b0dac16a476f78080e57b))
+* **deps:** update dependency eslint-plugin-jsdoc to v48.4.0 ([#164](https://github.com/meyfa/eslint-config/issues/164)) ([1854721](https://github.com/meyfa/eslint-config/commit/18547210afbcab6f98a407b7df464b56eeafed4b))
+* **deps:** update dependency eslint-plugin-jsdoc to v48.5.2 ([#175](https://github.com/meyfa/eslint-config/issues/175)) ([4410460](https://github.com/meyfa/eslint-config/commit/4410460baef1b03b89ae87c5839226b86bded262))
+* **deps:** update dependency eslint-plugin-n to v16.6.2 ([#150](https://github.com/meyfa/eslint-config/issues/150)) ([1d96acc](https://github.com/meyfa/eslint-config/commit/1d96acca8bec51e8139eb71665de093206bdc3dd))
+* **deps:** update dependency eslint-plugin-promise to v6.2.0 ([#172](https://github.com/meyfa/eslint-config/issues/172)) ([e0edcf0](https://github.com/meyfa/eslint-config/commit/e0edcf0fb1bc3948e5230a3a601b05328c3ecb8a))
+* **deps:** update dependency eslint-plugin-promise to v6.4.0 ([#177](https://github.com/meyfa/eslint-config/issues/177)) ([ab050b1](https://github.com/meyfa/eslint-config/commit/ab050b18ea1e2662b0b52841396c7acd7743eab4))
+* **deps:** update dependency eslint-plugin-unicorn to v51 ([#156](https://github.com/meyfa/eslint-config/issues/156)) ([8da39da](https://github.com/meyfa/eslint-config/commit/8da39da232f9245f35bf96281843212860d7d2a3))
+* **deps:** update dependency eslint-plugin-unicorn to v52 ([#163](https://github.com/meyfa/eslint-config/issues/163)) ([ba2f543](https://github.com/meyfa/eslint-config/commit/ba2f543920551e5c5611b4e94e4f608a37af1bba))
+* **deps:** update dependency eslint-plugin-unicorn to v54 ([#173](https://github.com/meyfa/eslint-config/issues/173)) ([2ceab11](https://github.com/meyfa/eslint-config/commit/2ceab119157438bb7ccea5b3330fddb4cf825cd5))
+
 ## [5.1.0](https://github.com/meyfa/eslint-config/compare/v5.0.1...v5.1.0) (2024-01-03)
 
 
