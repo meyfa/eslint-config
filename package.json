@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@rushstack/eslint-patch": "1.10.3",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
     "eslint-config-standard": "17.1.0",
     "eslint-config-standard-with-typescript": "36.1.0",
     "eslint-plugin-import": "2.29.1",
