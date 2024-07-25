@@ -1,6 +1,6 @@
 {
   "name": "@meyfa/eslint-config",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "ESLint config for personal TypeScript projects.",
   "type": "commonjs",
   "exports": {
