@@ -1,5 +1,28 @@
 # Changelog
 
+## [7.0.0](https://github.com/meyfa/eslint-config/compare/v6.1.0...v7.0.0) (2024-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Vendor eslint-config-standard ([#196](https://github.com/meyfa/eslint-config/issues/196))
+* Vendor base config and update TypeScript ESLint plugin to v7 ([#195](https://github.com/meyfa/eslint-config/issues/195))
+* Raise Node.js version requirement, drop support for v16 ([#193](https://github.com/meyfa/eslint-config/issues/193))
+* May break linting, and requires higher ESLint version.
+
+### Features
+
+* Raise Node.js version requirement, drop support for v16 ([#193](https://github.com/meyfa/eslint-config/issues/193)) ([9e1ddea](https://github.com/meyfa/eslint-config/commit/9e1ddea40621388850b6bfb8cc8395c393eab998))
+* Upgrade to eslint-config-standard-with-typescript v38 ([#190](https://github.com/meyfa/eslint-config/issues/190)) ([813e9ac](https://github.com/meyfa/eslint-config/commit/813e9aca7b6912a4f5a88242584453545144e071))
+* Vendor base config and update TypeScript ESLint plugin to v7 ([#195](https://github.com/meyfa/eslint-config/issues/195)) ([1985621](https://github.com/meyfa/eslint-config/commit/19856212a8a01ec455dbf9a7b84057f15f874530))
+* Vendor eslint-config-standard ([#196](https://github.com/meyfa/eslint-config/issues/196)) ([59a6bb1](https://github.com/meyfa/eslint-config/commit/59a6bb1f82aa848c678a930e0408d672f1083e58))
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-plugin-n to v17 ([#197](https://github.com/meyfa/eslint-config/issues/197)) ([fe2b33d](https://github.com/meyfa/eslint-config/commit/fe2b33d6863e2181e50dabbf23cd38798d2654ef))
+* **deps:** update dependency eslint-plugin-promise to v7 ([#188](https://github.com/meyfa/eslint-config/issues/188)) ([83c969c](https://github.com/meyfa/eslint-config/commit/83c969c9fbfeb64771480f1cce73d6f01f575670))
+
 ## [6.1.0](https://github.com/meyfa/eslint-config/compare/v6.0.0...v6.1.0) (2024-07-25)
 
 
