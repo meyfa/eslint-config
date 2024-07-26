@@ -3,12 +3,17 @@
 // ESLint patching to support proper plugin resolution
 require('@rushstack/eslint-patch/modern-module-resolution.js')
 
+import standard = require('./eslint-config-standard.js')
 import swt = require('./eslint-config-standard-with-typescript.js')
 
 export = {
-  extends: 'standard',
-  plugins: ['unicorn'],
+  ...standard,
+  plugins: [
+    ...(standard.plugins ?? []),
+    'unicorn'
+  ],
   rules: {
+    ...standard.rules,
     // ES modules require a file extension on every import.
     // NPM packages should be exempted. For example, we want to allow extensionless imports from 'preact/hooks'.
     'import/extensions': ['error', 'always', { ignorePackages: true }],
