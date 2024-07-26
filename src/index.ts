@@ -1,5 +1,9 @@
+/* eslint-disable import/first */
+
 // ESLint patching to support proper plugin resolution
 require('@rushstack/eslint-patch/modern-module-resolution.js')
+
+import swt = require('./eslint-config-standard-with-typescript.js')
 
 export = {
   extends: 'standard',
@@ -39,8 +43,10 @@ export = {
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
-      extends: 'standard-with-typescript',
+      plugins: swt.plugins,
+      parser: swt.parser,
       rules: {
+        ...swt.rules,
         // This is active in standard-with-typescript, but would be a huge migration task at this time.
         '@typescript-eslint/consistent-type-imports': 'off',
         // standard-with-typescript enforces no-confusing-void-expression even for the arrow shorthand.
