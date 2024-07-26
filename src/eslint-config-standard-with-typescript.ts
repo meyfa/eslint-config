@@ -53,10 +53,15 @@ function fromEntries<T> (iterable: Array<[string, T]>): Record<string, T> {
 }
 
 const config: Linter.Config = {
-  extends: 'eslint-config-standard',
-  plugins: ['@typescript-eslint'],
+  ...configStandard,
+  plugins: [
+    ...(configStandard.plugins ?? []),
+    '@typescript-eslint'
+  ],
   parser: '@typescript-eslint/parser',
   rules: {
+    ...configStandard.rules,
+
     'comma-dangle': 'off',
 
     // TypeScript has this functionality by default:

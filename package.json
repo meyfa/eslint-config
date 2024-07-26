@@ -44,7 +44,6 @@
   "dependencies": {
     "@rushstack/eslint-patch": "1.10.3",
     "@typescript-eslint/eslint-plugin": "7.17.0",
-    "eslint-config-standard": "17.1.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-jsdoc": "48.8.3",
     "eslint-plugin-n": "16.6.2",
