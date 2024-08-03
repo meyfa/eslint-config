@@ -1,5 +1,26 @@
 # Changelog
 
+## [8.0.0](https://github.com/meyfa/eslint-config/compare/v7.0.0...v8.0.0) (2024-08-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v8 ([#203](https://github.com/meyfa/eslint-config/issues/203))
+* Some rules have changed and new errors are possible.
+
+### Features
+
+* Migrate to fork of eslint-plugin-import ([#206](https://github.com/meyfa/eslint-config/issues/206)) ([c302aaf](https://github.com/meyfa/eslint-config/commit/c302aaf55ce1cf3dcd0ffe7aef87854fe80fee2a))
+* Use stylistic rules from eslint-stylistic ([#205](https://github.com/meyfa/eslint-config/issues/205)) ([c701e43](https://github.com/meyfa/eslint-config/commit/c701e438a58c54630b97e9ad3c7d87f295dbb4a0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rushstack/eslint-patch to v1.10.4 ([#198](https://github.com/meyfa/eslint-config/issues/198)) ([135afbc](https://github.com/meyfa/eslint-config/commit/135afbcdd51f05a6285f5d7cc1460c38cbb3a593))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v7.18.0 ([#202](https://github.com/meyfa/eslint-config/issues/202)) ([164b01c](https://github.com/meyfa/eslint-config/commit/164b01cdb2cfaadb280b17b0cad5b88315f9f7f7))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v8 ([#203](https://github.com/meyfa/eslint-config/issues/203)) ([246cdc7](https://github.com/meyfa/eslint-config/commit/246cdc76a966ec1f34fc6ca44e34acd093e7617c))
+* **deps:** update dependency eslint-plugin-jsdoc to v48.11.0 ([#201](https://github.com/meyfa/eslint-config/issues/201)) ([fe6b0f7](https://github.com/meyfa/eslint-config/commit/fe6b0f70c4eb66bca9a519ac8973949bb793b4f6))
+
 ## [7.0.0](https://github.com/meyfa/eslint-config/compare/v6.1.0...v7.0.0) (2024-07-26)
 
 
