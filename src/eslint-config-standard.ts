@@ -26,7 +26,7 @@ const config: Linter.Config = {
   },
 
   plugins: [
-    'import',
+    'import-x',
     'n',
     'promise',
     '@stylistic'
@@ -164,12 +164,12 @@ const config: Linter.Config = {
     'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
     yoda: ['error', 'never'],
 
-    'import/export': 'error',
-    'import/first': 'error',
-    'import/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
-    'import/no-duplicates': 'error',
-    'import/no-named-default': 'error',
-    'import/no-webpack-loader-syntax': 'error',
+    'import-x/export': 'error',
+    'import-x/first': 'error',
+    'import-x/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
+    'import-x/no-duplicates': 'error',
+    'import-x/no-named-default': 'error',
+    'import-x/no-webpack-loader-syntax': 'error',
 
     'n/handle-callback-err': ['error', '^(err|error)$'],
     'n/no-callback-literal': 'error',
