@@ -62,16 +62,6 @@ export = {
             ignoreArrowShorthand: true,
             ignoreVoidOperator: false
           }
-        ],
-        // Un-ban the {} type, which is the only concise way to express "any non-nullish value"
-        '@typescript-eslint/ban-types': [
-          'error',
-          {
-            extendDefaults: true,
-            types: {
-              '{}': false
-            }
-          }
         ]
       }
     },

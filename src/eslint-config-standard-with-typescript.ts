@@ -1,5 +1,6 @@
 /**
  * Adapted from eslint-config-standard-with-typescript v40.0.0, with some v44.0.0 sprinkled in.
+ * Stylistic rules replaced with @stylistic.
  *
  * eslint-config-standard-with-typescript is now called eslint-config-love, and is maintained by Shahar "Dawn" Or.
  * It is licensed under the MIT license. See: https://github.com/mightyiam/eslint-config-love/blob/main/LICENSE
@@ -9,32 +10,15 @@ import type { Linter } from 'eslint'
 import configStandard = require('./eslint-config-standard.js')
 
 const equivalents = [
-  'block-spacing',
-  'comma-spacing',
-  'dot-notation',
-  'brace-style',
-  'func-call-spacing',
-  'indent',
-  'key-spacing',
-  'keyword-spacing',
-  'lines-between-class-members',
   'no-array-constructor',
   'no-dupe-class-members',
-  'no-extra-parens',
   'no-implied-eval',
   'no-loss-of-precision',
   'no-redeclare',
-  'no-throw-literal',
   'no-unused-vars',
   'no-unused-expressions',
   'no-useless-constructor',
-  'object-curly-spacing',
-  'prefer-promise-reject-errors',
-  'quotes',
-  'semi',
-  'space-before-blocks',
-  'space-before-function-paren',
-  'space-infix-ops'
+  'prefer-promise-reject-errors'
 ] as const
 
 const ruleFromStandard = (name: string): Linter.RuleEntry => {
@@ -61,8 +45,6 @@ const config: Linter.Config = {
   parser: '@typescript-eslint/parser',
   rules: {
     ...configStandard.rules,
-
-    'comma-dangle': 'off',
 
     // TypeScript has this functionality by default:
     'no-undef': 'off',
@@ -94,65 +76,7 @@ const config: Linter.Config = {
       minimumDescriptionLength: 3
     }],
     '@typescript-eslint/ban-tslint-comment': 'error',
-    '@typescript-eslint/ban-types': ['error', {
-      extendDefaults: false,
-      types: {
-        String: {
-          message: 'Use string instead',
-          fixWith: 'string'
-        },
-        Boolean: {
-          message: 'Use boolean instead',
-          fixWith: 'boolean'
-        },
-        Number: {
-          message: 'Use number instead',
-          fixWith: 'number'
-        },
-        Symbol: {
-          message: 'Use symbol instead',
-          fixWith: 'symbol'
-        },
-        BigInt: {
-          message: 'Use bigint instead',
-          fixWith: 'bigint'
-        },
-        Function: {
-          message: [
-            'The `Function` type accepts any function-like value.',
-            'It provides no type safety when calling the function, which can be a common source of bugs.',
-            'It also accepts things like class declarations, which will throw at runtime as they will not be called with `new`.',
-            'If you are expecting the function to accept certain arguments, you should explicitly define the function shape.'
-          ].join('\n')
-        },
-        // object typing
-        Object: {
-          message: [
-            'The `Object` type actually means "any non-nullish value", so it is marginally better than `unknown`.',
-            '- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.',
-            '- If you want a type meaning "any value", you probably want `unknown` instead.'
-          ].join('\n')
-        },
-        '{}': {
-          message: [
-            '`{}` actually means "any non-nullish value".',
-            '- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.',
-            '- If you want a type meaning "any value", you probably want `unknown` instead.'
-          ].join('\n')
-        }
-      }
-    }],
     '@typescript-eslint/class-literal-property-style': ['error', 'fields'],
-    '@typescript-eslint/comma-dangle': ['error', {
-      arrays: 'never',
-      objects: 'never',
-      imports: 'never',
-      exports: 'never',
-      functions: 'never',
-      enums: 'ignore',
-      generics: 'ignore',
-      tuples: 'ignore'
-    }],
     '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
     '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
     '@typescript-eslint/consistent-type-assertions': [
@@ -177,13 +101,6 @@ const config: Linter.Config = {
       allowTypedFunctionExpressions: true,
       allowDirectConstAssertionInArrowFunctions: true
     }],
-    '@typescript-eslint/member-delimiter-style': [
-      'error',
-      {
-        multiline: { delimiter: 'none' },
-        singleline: { delimiter: 'comma', requireLast: false }
-      }
-    ],
     '@typescript-eslint/method-signature-style': 'error',
     '@typescript-eslint/naming-convention': ['error', {
       selector: 'variableLike',
@@ -232,7 +149,6 @@ const config: Linter.Config = {
       allowAny: false
     }],
     '@typescript-eslint/triple-slash-reference': ['error', { lib: 'never', path: 'never', types: 'never' }],
-    '@typescript-eslint/type-annotation-spacing': 'error',
     '@typescript-eslint/unbound-method': ['error', { ignoreStatic: false }],
     'no-void': ['error', { allowAsStatement: true }]
   }
