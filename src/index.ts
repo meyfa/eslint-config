@@ -1,4 +1,4 @@
-/* eslint-disable import-x/first */
+/* eslint-disable import/first */
 
 // ESLint patching to support proper plugin resolution
 require('@rushstack/eslint-patch/modern-module-resolution.js')
@@ -16,7 +16,7 @@ export = {
     ...standard.rules,
     // ES modules require a file extension on every import.
     // NPM packages should be exempted. For example, we want to allow extensionless imports from 'preact/hooks'.
-    'import-x/extensions': ['error', 'always', { ignorePackages: true }],
+    'import/extensions': ['error', 'always', { ignorePackages: true }],
     // Prefer 'node:' protocol imports for Node.js built-in modules.
     'unicorn/prefer-node-protocol': 'error',
     // Enforce correct Error subclassing.
