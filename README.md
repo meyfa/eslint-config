@@ -2,28 +2,63 @@
 
 [![CI](https://github.com/meyfa/eslint-config/actions/workflows/main.yml/badge.svg)](https://github.com/meyfa/eslint-config/actions/workflows/main.yml)
 
-ESLint config for personal TypeScript projects. It uses the RushStack patch to reduce dependency clutter.
+ESLint config for personal TypeScript projects.
 
 ## Usage
 
 Install ESLint, as well as this package (`-DE` means `--save-dev --save-exact`):
 
 ```sh
-npm install -DE eslint@8 @meyfa/eslint-config
+npm install -DE eslint@9 @meyfa/eslint-config
 ```
 
-Then in the `.eslintrc.yml`:
+Then in the `eslint.config.js`:
 
-```yml
-extends: '@meyfa/eslint-config'
-parserOptions:
-  project: './tsconfig.eslint.json'
+```js
+import eslintConfig from '@meyfa/eslint-config'
+
+export default [
+  ...eslintConfig,
+  {
+    ignores: ['dist']
+  }
+]
 ```
 
-That's it! If the project requires JSDoc for some files, add the following to the `.eslintrc.yml`:
+If needed, override the TypeScript config location (default: `./tsconfig.lint.json`):
 
-```yml
-overrides:
-  - files: ['src/**/*.ts']
-    extends: '@meyfa/eslint-config/jsdoc'
+```js
+import eslintConfig from '@meyfa/eslint-config'
+
+export default [
+  ...eslintConfig,
+  {
+    ignores: ['dist']
+  },
+  {
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.lint.json'
+      }
+    }
+  }
+]
+```
+
+If the project requires JSDoc for some files, add the following:
+
+```js
+import eslintConfig from '@meyfa/eslint-config'
+import eslintConfigJsdoc from '@meyfa/eslint-config/jsdoc'
+
+export default [
+  ...eslintConfig,
+  {
+    ignores: ['dist']
+  },
+  {
+    ...eslintConfigJsdoc,
+    files: ['src/**/*.ts']
+  }
+]
 ```

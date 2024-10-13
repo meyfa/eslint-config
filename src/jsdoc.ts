@@ -1,9 +1,13 @@
-// ESLint patching to support proper plugin resolution
-require('@rushstack/eslint-patch/modern-module-resolution.js')
+import pluginJsdoc from 'eslint-plugin-jsdoc'
 
-export = {
-  extends: 'plugin:jsdoc/recommended',
+const base = pluginJsdoc.configs['flat/recommended-typescript-error']
+
+export default {
+  ...base,
+
   rules: {
+    ...base.rules,
+
     'jsdoc/require-jsdoc': [
       'error',
       {
@@ -14,8 +18,7 @@ export = {
         ]
       }
     ],
-    'jsdoc/require-param-type': 'off',
-    'jsdoc/require-returns-type': 'off',
+
     'jsdoc/no-types': [
       'error',
       {
@@ -24,6 +27,7 @@ export = {
         ]
       }
     ],
+
     'jsdoc/require-returns-description': [
       'error',
       {
@@ -32,6 +36,7 @@ export = {
         ]
       }
     ],
+
     'jsdoc/require-param-description': [
       'error',
       {
@@ -40,6 +45,7 @@ export = {
         ]
       }
     ],
+
     'jsdoc/tag-lines': [
       'warn',
       'never',
