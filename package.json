@@ -44,7 +44,7 @@
   "dependencies": {
     "@stylistic/eslint-plugin": "2.9.0",
     "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsdoc": "50.3.2",
+    "eslint-plugin-jsdoc": "50.5.0",
     "eslint-plugin-n": "17.11.1",
     "eslint-plugin-promise": "7.1.0",
     "eslint-plugin-unicorn": "56.0.0",
