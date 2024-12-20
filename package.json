@@ -45,10 +45,10 @@
     "@stylistic/eslint-plugin": "2.12.1",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsdoc": "50.6.1",
-    "eslint-plugin-n": "17.15.0",
+    "eslint-plugin-n": "17.15.1",
     "eslint-plugin-promise": "7.2.1",
     "eslint-plugin-unicorn": "56.0.1",
-    "typescript-eslint": "8.18.0"
+    "typescript-eslint": "8.18.1"
   },
   "devDependencies": {
     "@types/eslint__js": "8.42.3",
