@@ -1,5 +1,25 @@
 # Changelog
 
+## [9.0.0](https://github.com/meyfa/eslint-config/compare/v8.0.1...v9.0.0) (2025-05-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency eslint-plugin-unicorn to v59 ([#272](https://github.com/meyfa/eslint-config/issues/272))
+
+### Bug Fixes
+
+* **deps:** update dependencies (non-major) ([#258](https://github.com/meyfa/eslint-config/issues/258)) ([a12c54d](https://github.com/meyfa/eslint-config/commit/a12c54d412e086347edf44ac71aeec37781f3908))
+* **deps:** update dependencies (non-major) ([#261](https://github.com/meyfa/eslint-config/issues/261)) ([a922210](https://github.com/meyfa/eslint-config/commit/a9222105f9eb47ec562d78fcf455489c0e659287))
+* **deps:** update dependencies (non-major) ([#263](https://github.com/meyfa/eslint-config/issues/263)) ([062d98d](https://github.com/meyfa/eslint-config/commit/062d98dd74b4b0b95f196cd2a12685cf260394ea))
+* **deps:** update dependencies (non-major) ([#269](https://github.com/meyfa/eslint-config/issues/269)) ([52962f8](https://github.com/meyfa/eslint-config/commit/52962f89538f86d5e30acae65f349865269b7385))
+* **deps:** update dependencies (non-major) ([#271](https://github.com/meyfa/eslint-config/issues/271)) ([406b10a](https://github.com/meyfa/eslint-config/commit/406b10afae890d7a09727d34c9b14a7235cbe54e))
+* **deps:** update dependency @stylistic/eslint-plugin to v4 ([#264](https://github.com/meyfa/eslint-config/issues/264)) ([efd0731](https://github.com/meyfa/eslint-config/commit/efd0731129145edb29282cd5b6a8d335a547145d))
+* **deps:** update dependency eslint-plugin-unicorn to v57 ([#266](https://github.com/meyfa/eslint-config/issues/266)) ([08a13b7](https://github.com/meyfa/eslint-config/commit/08a13b7b8d2d125e9efd2e1e05d9c545356dc0a9))
+* **deps:** update dependency eslint-plugin-unicorn to v59 ([#272](https://github.com/meyfa/eslint-config/issues/272)) ([986e2ad](https://github.com/meyfa/eslint-config/commit/986e2adf053ece4e39d5a31414ea185db91ad5ca))
+* **deps:** update dependency typescript-eslint to v8.16.0 ([#254](https://github.com/meyfa/eslint-config/issues/254)) ([793ef95](https://github.com/meyfa/eslint-config/commit/793ef95fa229742dc2294a2ed21478d27619eed7))
+* **deps:** update dependency typescript-eslint to v8.17.0 ([#260](https://github.com/meyfa/eslint-config/issues/260)) ([8bda25e](https://github.com/meyfa/eslint-config/commit/8bda25eff1e87484ff25f1ece8d13377ed02eb7d))
+
 ## [8.0.1](https://github.com/meyfa/eslint-config/compare/v8.0.0...v8.0.1) (2024-11-19)
 
 
