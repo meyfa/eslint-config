@@ -1,8 +1,9 @@
+import { defineConfig } from 'eslint/config'
 import pluginJsdoc from 'eslint-plugin-jsdoc'
 
 const base = pluginJsdoc.configs['flat/recommended-typescript-error']
 
-export default {
+export default defineConfig({
   ...base,
 
   rules: {
@@ -54,4 +55,4 @@ export default {
       }
     ]
   }
-}
+})
