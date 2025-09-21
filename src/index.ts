@@ -1,3 +1,5 @@
+import { defineConfig } from 'eslint/config'
+import { Linter } from 'eslint'
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import pluginImport from 'eslint-plugin-import'
@@ -14,11 +16,11 @@ const customizedStylistic = pluginStylistic.configs.customize({
   jsx: false
 })
 
-export default tseslint.config({
+export default defineConfig({
   extends: [
     eslint.configs.recommended,
-    ...tseslint.configs.strictTypeChecked,
-    ...tseslint.configs.stylisticTypeChecked
+    ...(tseslint.configs.strictTypeChecked as Linter.Config[]),
+    ...(tseslint.configs.stylisticTypeChecked as Linter.Config[])
   ],
 
   plugins: {
