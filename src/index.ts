@@ -111,7 +111,7 @@ export default defineConfig({
     // Enforce correct Error subclassing.
     'unicorn/custom-error-definition': 'error',
     // Require Array.isArray() instead of instanceof Array.
-    'unicorn/no-instanceof-array': 'error',
+    'unicorn/no-instanceof-builtins': 'error',
     // Disallow comparing undefined using typeof.
     'unicorn/no-typeof-undefined': 'error',
     // Disallow useless fallback when spreading in object literals.
