@@ -13,7 +13,7 @@ const customizedStylistic = pluginStylistic.configs.customize({
   quoteProps: 'as-needed',
   commaDangle: 'never',
   arrowParens: true,
-  jsx: false
+  jsx: true
 })
 
 export default defineConfig({
@@ -42,6 +42,29 @@ export default defineConfig({
 
     '@stylistic/space-before-function-paren': ['error', 'always'],
     '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before', '|>': 'before' } }],
+
+    '@stylistic/jsx-closing-bracket-location': ['error'],
+    '@stylistic/jsx-closing-tag-location': ['error'],
+    '@stylistic/jsx-curly-brace-presence': ['error', {
+      props: 'never',
+      children: 'never',
+      propElementValues: 'always'
+    }],
+    '@stylistic/jsx-curly-spacing': ['error', { when: 'never', children: true }],
+    '@stylistic/jsx-equals-spacing': ['error', 'never'],
+    '@stylistic/jsx-first-prop-new-line': 'error',
+    '@stylistic/jsx-max-props-per-line': ['error', { when: 'multiline' }],
+    '@stylistic/jsx-quotes': ['error', 'prefer-single'],
+    '@stylistic/jsx-self-closing-comp': ['error', {
+      component: true,
+      html: true
+    }],
+    '@stylistic/jsx-tag-spacing': ['error', {
+      afterOpening: 'never',
+      beforeClosing: 'never',
+      closingSlash: 'never',
+      beforeSelfClosing: 'always'
+    }],
 
     'no-empty': ['error', { allowEmptyCatch: true }],
 
