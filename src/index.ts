@@ -70,7 +70,20 @@ export default defineConfig({
 
     '@typescript-eslint/no-confusing-void-expression': [
       'error',
-      { ignoreArrowShorthand: true, ignoreVoidOperator: false }
+      {
+        ignoreArrowShorthand: true,
+        ignoreVoidOperator: false
+      }
+    ],
+
+    // node:test
+    '@typescript-eslint/no-floating-promises': [
+      'error',
+      {
+        allowForKnownSafeCalls: [
+          { from: 'package', name: ['describe', 'it', 'suite', 'test'], package: 'node:test' }
+        ]
+      }
     ],
 
     '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
