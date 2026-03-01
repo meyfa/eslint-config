@@ -8,6 +8,14 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
+    name: 'no-instanceof-builtins-fail',
+    expectErrors: [
+      'unicorn/no-instanceof-builtins', // Array
+      'unicorn/no-instanceof-builtins', // Function
+      'unicorn/no-instanceof-builtins' // String
+    ]
+  },
+  {
     name: 'no-typeof-undefined-fail',
     expectErrors: [
       'unicorn/no-typeof-undefined'
