@@ -7,7 +7,7 @@
     "noEmit": true
   },
   "include": [
-    "fixtures/**/*.ts",
-    "fixtures/**/*.tsx"
+    "__generated__/**/*.ts",
+    "__generated__/**/*.tsx"
   ]
 }
