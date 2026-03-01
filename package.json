@@ -23,6 +23,8 @@
     "build": "node -e \"fs.rmSync('./dist',{force:true,recursive:true})\" && tsc",
     "lint": "tsc --noEmit && eslint .",
     "lint-fix": "tsc --noEmit && eslint --fix .",
+    "test": "tsx --test \"test/**/*.test.ts\"",
+    "test:watch": "tsx --test --watch \"test/**/*.test.ts\"",
     "prepack": "npm run build"
   },
   "repository": {
@@ -53,6 +55,7 @@
   "devDependencies": {
     "@types/node": "24.10.4",
     "eslint": "9.39.2",
+    "tsx": "4.21.0",
     "typescript": "5.9.3"
   }
 }
