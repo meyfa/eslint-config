@@ -198,6 +198,34 @@ export default defineConfig({
     curly: ['error', 'all'],
 
     // Enforce the consistent use of the radix argument when using parseInt().
-    radix: 'error'
+    radix: 'error',
+
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'ForStatement[update.type=\'UpdateExpression\'] > UpdateExpression[operator=\'++\'][prefix=false]',
+        message: 'Use prefix increment in for-loop update clause: ++i (not i++).'
+      },
+      {
+        selector: 'ForStatement[update.type=\'UpdateExpression\'] > UpdateExpression[operator=\'--\'][prefix=false]',
+        message: 'Use prefix decrement in for-loop update clause: --i (not i--).'
+      },
+      {
+        selector: 'ForStatement[update.type=\'SequenceExpression\'] > SequenceExpression > UpdateExpression[operator=\'++\'][prefix=false]',
+        message: 'Use prefix increment in for-loop update clause: ++i (not i++).'
+      },
+      {
+        selector: 'ForStatement[update.type=\'SequenceExpression\'] > SequenceExpression > UpdateExpression[operator=\'--\'][prefix=false]',
+        message: 'Use prefix decrement in for-loop update clause: --i (not i--).'
+      },
+      {
+        selector: 'ExpressionStatement > UpdateExpression[operator=\'++\'][prefix=false]',
+        message: 'Use prefix increment: ++i (not i++).'
+      },
+      {
+        selector: 'ExpressionStatement > UpdateExpression[operator=\'--\'][prefix=false]',
+        message: 'Use prefix decrement: --i (not i--).'
+      }
+    ]
   }
 })

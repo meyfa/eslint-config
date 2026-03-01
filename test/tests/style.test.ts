@@ -132,6 +132,30 @@ await runFixtureTests('style', [
     name: 'quote-props-pass'
   },
   {
+    name: 'prefix-increment-for-fail',
+    expectErrors: [
+      'no-restricted-syntax', // i++
+      'no-restricted-syntax', // j--
+      'no-restricted-syntax', // a++
+      'no-restricted-syntax', // c--
+      'no-restricted-syntax', // b++
+      'no-restricted-syntax' // d--
+    ]
+  },
+  {
+    name: 'prefix-increment-for-pass'
+  },
+  {
+    name: 'prefix-increment-standalone-fail',
+    expectErrors: [
+      'no-restricted-syntax', // foo++
+      'no-restricted-syntax' // bar--
+    ]
+  },
+  {
+    name: 'prefix-increment-standalone-pass'
+  },
+  {
     name: 'space-fail',
     expectErrors: [
       '@stylistic/space-before-function-paren',
