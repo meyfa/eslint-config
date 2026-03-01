@@ -8,6 +8,12 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
+    name: 'isolated-functions-fail',
+    expectErrors: [
+      'unicorn/isolated-functions'
+    ]
+  },
+  {
     name: 'no-instanceof-builtins-fail',
     expectErrors: [
       'unicorn/no-instanceof-builtins', // Array
