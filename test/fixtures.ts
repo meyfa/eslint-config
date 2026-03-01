@@ -21,6 +21,14 @@ export interface FixtureCase {
   readonly expectWarnings?: readonly string[]
 }
 
+export interface FixtureSuiteOptions {
+  /**
+   * Path to an ESLint override config file, relative to the repo root.
+   * Defaults to `test/eslint-test-config.js`.
+   */
+  readonly overrideConfigFile?: string
+}
+
 type LintMessage = ESLint.LintResult['messages'][number]
 
 export interface LintResult {
@@ -35,15 +43,33 @@ const fixturesDir = path.join(rootDir, 'test', 'fixtures')
 
 const fixtureExtensions = ['ts', 'tsx', 'js', 'jsx', 'mjs', 'cjs'] as const
 
-const eslint = new ESLint({
-  cwd: rootDir,
-  overrideConfigFile: path.join(rootDir, 'test', 'eslint-test-config.js')
-})
+const eslintCache = new Map<string, ESLint>()
 
-export async function lintFixture (fixtureName: string): Promise<LintResult> {
+function getEslint (overrideConfigFile: string): ESLint {
+  const existing = eslintCache.get(overrideConfigFile)
+  if (existing != null) {
+    return existing
+  }
+
+  const instance = new ESLint({
+    cwd: rootDir,
+    overrideConfigFile
+  })
+  eslintCache.set(overrideConfigFile, instance)
+
+  return instance
+}
+
+export async function lintFixture (fixtureName: string, options: FixtureSuiteOptions = {}): Promise<LintResult> {
   const resolvedFixtureName = await resolveFixtureName(fixtureName)
   const filePath = path.join(fixturesDir, resolvedFixtureName)
 
+  const overrideConfigFile = options.overrideConfigFile ?? 'test/eslint-test-config.js'
+  const overrideConfigFilePath = path.isAbsolute(overrideConfigFile)
+    ? overrideConfigFile
+    : path.join(rootDir, overrideConfigFile)
+
+  const eslint = getEslint(overrideConfigFilePath)
   const results = await eslint.lintFiles([filePath])
   assert.strictEqual(results.length, 1)
 
@@ -55,18 +81,18 @@ export async function lintFixture (fixtureName: string): Promise<LintResult> {
   return { filePath, errors, warnings, ruleIds }
 }
 
-export async function runFixtureTests (suite: string, cases: readonly FixtureCase[]): Promise<void> {
+export async function runFixtureTests (suite: string, cases: readonly FixtureCase[], options: FixtureSuiteOptions = {}): Promise<void> {
   await test(suite, async () => {
     await assertSuiteCoverage(suite, cases)
     for (const fixtureCase of cases) {
-      await runFixtureTest(suite, fixtureCase)
+      await runFixtureTest(suite, fixtureCase, options)
     }
   })
 }
 
-async function runFixtureTest (suite: string, fixtureCase: FixtureCase): Promise<void> {
+async function runFixtureTest (suite: string, fixtureCase: FixtureCase, options: FixtureSuiteOptions): Promise<void> {
   await test(fixtureCase.name, async () => {
-    const result = await lintFixture(`${suite}/${fixtureCase.name}`)
+    const result = await lintFixture(`${suite}/${fixtureCase.name}`, options)
 
     if (fixtureCase.expectErrors == null) {
       assert.strictEqual(
