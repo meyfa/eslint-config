@@ -28,6 +28,12 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
+    name: 'no-useless-collection-argument-fail',
+    expectErrors: [
+      'unicorn/no-useless-collection-argument'
+    ]
+  },
+  {
     name: 'no-useless-fallback-in-spread-fail',
     expectErrors: [
       'unicorn/no-useless-fallback-in-spread'

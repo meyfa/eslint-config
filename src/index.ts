@@ -116,6 +116,8 @@ export default defineConfig({
     'unicorn/no-instanceof-builtins': 'error',
     // Disallow comparing undefined using typeof.
     'unicorn/no-typeof-undefined': 'error',
+    // Disallow useless values or fallbacks in Set, Map, WeakSet, or WeakMap.
+    'unicorn/no-useless-collection-argument': 'error',
     // Disallow useless fallback when spreading in object literals.
     'unicorn/no-useless-fallback-in-spread': 'error',
     // Prefer .at() method for index access and String#charAt().
