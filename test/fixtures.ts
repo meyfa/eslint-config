@@ -5,8 +5,53 @@ import { test } from 'node:test'
 import { fileURLToPath } from 'node:url'
 import { ESLint } from 'eslint'
 
+const testDirectory = path.dirname(fileURLToPath(import.meta.url))
+const rootDirectory = path.dirname(testDirectory)
+
+const defaultEslintConfigFile = path.join(testDirectory, 'eslint-test-config.js')
+const generatedFixturesDir = path.join(testDirectory, '__generated__')
+
+const fixtureExtensions = ['ts', 'tsx', 'js', 'jsx', 'mjs', 'cjs'] as const
+const defaultFixtureExtension = 'ts'
+
+export function dedent (strings: TemplateStringsArray, ...values: readonly unknown[]): string {
+  const text = evaluateTemplate(strings, ...values).replace(/\r\n/g, '\n')
+  if (!text.startsWith('\n')) {
+    throw new Error('dedent template must start with a newline')
+  }
+
+  const lines = text.split('\n').slice(1)
+
+  const minIndent = lines.filter((l) => l.trim() !== '').reduce((min, line) => {
+    const indent = /^[ ]*/.exec(line)?.at(0)?.length ?? 0
+    return Math.min(min, indent)
+  }, Number.POSITIVE_INFINITY)
+
+  return Number.isFinite(minIndent) && minIndent > 0
+    ? lines.map((line) => line.slice(minIndent)).join('\n')
+    : lines.join('\n')
+}
+
+function evaluateTemplate (strings: TemplateStringsArray, ...values: readonly unknown[]): string {
+  return strings.reduce((result, string, i) => {
+    const value = values[i - 1]
+    return result + (value != null ? `${values[i - 1] as any}` : '') + string
+  }, '')
+}
+
 export interface FixtureCase {
   readonly name: string
+
+  /**
+   * Inline fixture source code.
+   */
+  readonly code: string
+
+  /**
+   * File extension to use when linting the fixture.
+   * Defaults to `ts`.
+   */
+  readonly fileExtension?: (typeof fixtureExtensions)[number]
 
   /**
    * A list of all error rule IDs to expect. If specified, the actual errors must match this list exactly.
@@ -38,11 +83,6 @@ export interface LintResult {
   readonly ruleIds: readonly string[]
 }
 
-const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const fixturesDir = path.join(rootDir, 'test', 'fixtures')
-
-const fixtureExtensions = ['ts', 'tsx', 'js', 'jsx', 'mjs', 'cjs'] as const
-
 const eslintCache = new Map<string, ESLint>()
 
 function getEslint (overrideConfigFile: string): ESLint {
@@ -52,7 +92,7 @@ function getEslint (overrideConfigFile: string): ESLint {
   }
 
   const instance = new ESLint({
-    cwd: rootDir,
+    cwd: rootDirectory,
     overrideConfigFile
   })
   eslintCache.set(overrideConfigFile, instance)
@@ -60,39 +100,36 @@ function getEslint (overrideConfigFile: string): ESLint {
   return instance
 }
 
-export async function lintFixture (fixtureName: string, options: FixtureSuiteOptions = {}): Promise<LintResult> {
-  const resolvedFixtureName = await resolveFixtureName(fixtureName)
-  const filePath = path.join(fixturesDir, resolvedFixtureName)
-
-  const overrideConfigFile = options.overrideConfigFile ?? 'test/eslint-test-config.js'
-  const overrideConfigFilePath = path.isAbsolute(overrideConfigFile)
-    ? overrideConfigFile
-    : path.join(rootDir, overrideConfigFile)
-
-  const eslint = getEslint(overrideConfigFilePath)
-  const results = await eslint.lintFiles([filePath])
-  assert.strictEqual(results.length, 1)
-
-  const messages = results[0].messages
-  const errors = messages.filter((m) => m.severity === 2)
-  const warnings = messages.filter((m) => m.severity === 1)
-  const ruleIds = messages.map((m) => m.ruleId).filter((id) => id != null)
-
-  return { filePath, errors, warnings, ruleIds }
-}
-
 export async function runFixtureTests (suite: string, cases: readonly FixtureCase[], options: FixtureSuiteOptions = {}): Promise<void> {
   await test(suite, async () => {
-    await assertSuiteCoverage(suite, cases)
-    for (const fixtureCase of cases) {
-      await runFixtureTest(suite, fixtureCase, options)
+    assertUniqueCaseNames(suite, cases)
+
+    const suiteDir = path.join(generatedFixturesDir, suite)
+    await fs.mkdir(suiteDir, { recursive: true })
+
+    try {
+      // Pre-generate all fixtures before the first lint run.
+      // In CI, @typescript-eslint/parser may cache the TS Program for the project;
+      // if later files don't exist yet, they won't be part of the Program and will error.
+      for (const fixtureCase of cases) {
+        const filePath = getFixtureFilePath(suite, fixtureCase)
+        await fs.mkdir(path.dirname(filePath), { recursive: true })
+        await fs.writeFile(filePath, fixtureCase.code, 'utf-8')
+      }
+
+      for (const fixtureCase of cases) {
+        await runFixtureTest(suite, fixtureCase, options)
+      }
+    } finally {
+      // Keep the repo clean even on failing tests.
+      await fs.rm(suiteDir, { recursive: true, force: true })
     }
   })
 }
 
 async function runFixtureTest (suite: string, fixtureCase: FixtureCase, options: FixtureSuiteOptions): Promise<void> {
   await test(fixtureCase.name, async () => {
-    const result = await lintFixture(`${suite}/${fixtureCase.name}`, options)
+    const result = await lintInlineFixture(suite, fixtureCase, options)
 
     if (fixtureCase.expectErrors == null) {
       assert.strictEqual(
@@ -126,80 +163,49 @@ async function runFixtureTest (suite: string, fixtureCase: FixtureCase, options:
   })
 }
 
-async function resolveFixtureName (fixtureName: string): Promise<string> {
-  if (fixtureExtensions.some((ext) => fixtureName.endsWith(`.${ext}`))) {
-    await assertFixtureExists(fixtureName)
-    return fixtureName
-  }
+async function lintInlineFixture (
+  suite: string,
+  fixtureCase: FixtureCase,
+  options: FixtureSuiteOptions = {}
+): Promise<LintResult> {
+  const fileExtension = fixtureCase.fileExtension ?? defaultFixtureExtension
+  assert.ok(
+    fixtureExtensions.includes(fileExtension),
+    `Unsupported fixture extension: ${fileExtension}`
+  )
+  const fileName = `${fixtureCase.name}.${fileExtension}`
 
-  for (const ext of fixtureExtensions) {
-    const candidate = `${fixtureName}.${ext}`
-    if (await fixtureExists(candidate)) {
-      return candidate
-    }
-  }
+  const overrideConfigFile = options.overrideConfigFile ?? defaultEslintConfigFile
+  const overrideConfigFilePath = path.isAbsolute(overrideConfigFile)
+    ? overrideConfigFile
+    : path.join(testDirectory, overrideConfigFile)
+  const eslint = getEslint(overrideConfigFilePath)
 
-  const triedNames = fixtureExtensions.map((ext) => `${fixtureName}.${ext}`).join(', ')
-  assert.fail(`Fixture not found: ${fixtureName} (tried: ${triedNames})`)
+  const filePath = path.join(generatedFixturesDir, suite, fileName)
+
+  const results = await eslint.lintFiles([filePath])
+  assert.strictEqual(results.length, 1)
+
+  const messages = results[0].messages
+  const errors = messages.filter((m) => m.severity === 2)
+  const warnings = messages.filter((m) => m.severity === 1)
+  const ruleIds = messages.map((m) => m.ruleId).filter((id) => id != null)
+
+  return { filePath, errors, warnings, ruleIds }
 }
 
-async function assertFixtureExists (fixtureName: string): Promise<void> {
-  const filePath = path.join(fixturesDir, fixtureName)
-  try {
-    await fs.access(filePath)
-  } catch {
-    assert.fail(`Fixture not found: ${fixtureName}`)
-  }
+function getFixtureFilePath (suite: string, fixtureCase: FixtureCase): string {
+  const fileExtension = fixtureCase.fileExtension ?? defaultFixtureExtension
+  const fileName = `${fixtureCase.name}.${fileExtension}`
+  return path.join(generatedFixturesDir, suite, fileName)
 }
 
-async function fixtureExists (fixtureName: string): Promise<boolean> {
-  const filePath = path.join(fixturesDir, fixtureName)
-  try {
-    await fs.access(filePath)
-    return true
-  } catch {
-    return false
-  }
-}
-
-async function assertSuiteCoverage (suite: string, cases: readonly FixtureCase[]): Promise<void> {
-  const suiteDir = path.join(fixturesDir, suite)
+function assertUniqueCaseNames (suite: string, cases: readonly FixtureCase[]): void {
   const caseNames = cases.map((c) => c.name)
   const uniqueCaseNames = new Set(caseNames)
   assert.equal(
     uniqueCaseNames.size,
     caseNames.length,
     `Duplicate fixture case names in suite '${suite}': ${caseNames.join(', ')}`
-  )
-
-  const entries = await fs.readdir(suiteDir, { withFileTypes: true })
-  const fixtureBaseNames: string[] = []
-  for (const entry of entries) {
-    if (!entry.isFile() || entry.name.endsWith('.d.ts')) {
-      continue
-    }
-
-    const ext = path.extname(entry.name).slice(1)
-    if (!fixtureExtensions.includes(ext as (typeof fixtureExtensions)[number])) {
-      continue
-    }
-
-    fixtureBaseNames.push(path.basename(entry.name, path.extname(entry.name)))
-  }
-
-  const fixtureNameSet = new Set(fixtureBaseNames)
-
-  const missingFixtureFiles = caseNames.filter((name) => !fixtureNameSet.has(name))
-  assert.equal(
-    missingFixtureFiles.length,
-    0,
-    `Suite '${suite}' references missing fixtures: ${missingFixtureFiles.join(', ')}`
-  )
-
-  const orphanFixtures = fixtureBaseNames.filter((name) => !uniqueCaseNames.has(name))
-  assert.equal(
-    orphanFixtures.length,
-    0,
-    `Suite '${suite}' has fixture files not covered by tests: ${orphanFixtures.join(', ')}`
   )
 }

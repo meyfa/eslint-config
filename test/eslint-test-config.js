@@ -7,7 +7,7 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 export default [
   ...baseConfig,
   {
-    files: ['test/fixtures/**/*.{ts,tsx,js,jsx,mjs,cjs}'],
+    files: ['test/__generated__/**/*.{ts,tsx,js,jsx,mjs,cjs}'],
     languageOptions: {
       parserOptions: {
         project: ['./test/tsconfig.eslint.json'],
