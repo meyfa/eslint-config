@@ -91,6 +91,15 @@ await runFixtureTests('style', [
     ]
   },
   {
+    name: 'jsx-wrap-multilines-prop-fail',
+    expectErrors: [
+      '@stylistic/jsx-wrap-multilines'
+    ]
+  },
+  {
+    name: 'jsx-wrap-multilines-prop-pass'
+  },
+  {
     name: 'multi-spaces-fail',
     expectErrors: [
       '@stylistic/no-multi-spaces'

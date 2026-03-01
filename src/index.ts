@@ -65,6 +65,16 @@ export default defineConfig({
       closingSlash: 'never',
       beforeSelfClosing: 'always'
     }],
+    '@stylistic/jsx-wrap-multilines': ['error', {
+      declaration: 'parens-new-line',
+      assignment: 'parens-new-line',
+      return: 'parens-new-line',
+      arrow: 'parens-new-line',
+      condition: 'parens-new-line',
+      logical: 'parens-new-line',
+      prop: 'parens-new-line',
+      propertyValue: 'parens-new-line'
+    }],
 
     'no-empty': ['error', { allowEmptyCatch: true }],
 
