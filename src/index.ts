@@ -1,12 +1,12 @@
-import { defineConfig } from 'eslint/config'
-import { Linter } from 'eslint'
 import eslint from '@eslint/js'
-import tseslint from 'typescript-eslint'
+import pluginStylistic from '@stylistic/eslint-plugin'
+import { Linter } from 'eslint'
+import { defineConfig } from 'eslint/config'
 import pluginImport from 'eslint-plugin-import'
 import pluginNode from 'eslint-plugin-n'
 import pluginPromise from 'eslint-plugin-promise'
-import pluginStylistic from '@stylistic/eslint-plugin'
 import pluginUnicorn from 'eslint-plugin-unicorn'
+import tseslint from 'typescript-eslint'
 
 const customizedStylistic = pluginStylistic.configs.customize({
   braceStyle: '1tbs',
@@ -90,6 +90,18 @@ export default defineConfig({
     'import/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
     'import/no-duplicates': 'error',
     'import/no-named-default': 'error',
+    'import/order': ['error', {
+      alphabetize: {
+        order: 'asc',
+        caseInsensitive: false
+      },
+      named: {
+        enabled: true,
+        export: false
+      },
+      'newlines-between': 'never'
+    }],
+    'import/newline-after-import': ['error', { count: 1 }],
     'import/no-webpack-loader-syntax': 'error',
 
     // ES modules require a file extension on every import.
