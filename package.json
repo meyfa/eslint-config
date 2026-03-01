@@ -53,8 +53,8 @@
     "typescript-eslint": "8.45.0"
   },
   "devDependencies": {
-    "@types/node": "24.10.4",
-    "eslint": "9.39.2",
+    "@types/node": "24.11.0",
+    "eslint": "9.39.3",
     "tsx": "4.21.0",
     "typescript": "5.9.3"
   }
