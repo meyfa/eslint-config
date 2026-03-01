@@ -194,6 +194,9 @@ export default defineConfig({
     // Require new when throwing an error.
     'unicorn/throw-new-error': 'error',
 
+    // Require braces for all control statements.
+    curly: ['error', 'all'],
+
     // Enforce the consistent use of the radix argument when using parseInt().
     radix: 'error'
   }

@@ -100,6 +100,12 @@ await runFixtureTests('style', [
     name: 'jsx-wrap-multilines-prop-pass'
   },
   {
+    name: 'max-statements-per-line-fail',
+    expectErrors: [
+      '@stylistic/max-statements-per-line'
+    ]
+  },
+  {
     name: 'multi-spaces-fail',
     expectErrors: [
       '@stylistic/no-multi-spaces'

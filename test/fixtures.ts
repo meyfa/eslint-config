@@ -175,10 +175,15 @@ async function assertSuiteCoverage (suite: string, cases: readonly FixtureCase[]
   const entries = await fs.readdir(suiteDir, { withFileTypes: true })
   const fixtureBaseNames: string[] = []
   for (const entry of entries) {
-    if (!entry.isFile()) continue
-    if (entry.name.endsWith('.d.ts')) continue
+    if (!entry.isFile() || entry.name.endsWith('.d.ts')) {
+      continue
+    }
+
     const ext = path.extname(entry.name).slice(1)
-    if (!fixtureExtensions.includes(ext as (typeof fixtureExtensions)[number])) continue
+    if (!fixtureExtensions.includes(ext as (typeof fixtureExtensions)[number])) {
+      continue
+    }
+
     fixtureBaseNames.push(path.basename(entry.name, path.extname(entry.name)))
   }
 
