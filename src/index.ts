@@ -106,6 +106,8 @@ export default defineConfig({
 
     'promise/param-names': 'error',
 
+    // Prevent usage of variables from outside the scope of isolated functions
+    'unicorn/isolated-functions': 'error',
     // Prefer 'node:' protocol imports for Node.js built-in modules.
     'unicorn/prefer-node-protocol': 'error',
     // Enforce correct Error subclassing.
