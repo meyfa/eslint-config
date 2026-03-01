@@ -3,60 +3,68 @@ import { runFixtureTests } from '../fixtures.js'
 await runFixtureTests('style', [
   {
     name: 'arrow-parens-fail',
-    mustHave: ['@stylistic/arrow-parens'],
-    errorCount: 1
+    expectErrors: [
+      '@stylistic/arrow-parens'
+    ]
   },
   {
-    name: 'arrow-parens-pass',
-    errorCount: 0
-  },
-  {
-    name: 'comma-dangle-fail',
-    mustHave: ['@stylistic/comma-dangle'],
-    errorCount: 2 // array, object
-  },
-  {
-    name: 'comma-dangle-pass',
-    errorCount: 0
+    name: 'arrow-parens-pass'
   },
   {
     name: 'brace-style-fail',
-    mustHave: ['@stylistic/brace-style'],
-    errorCount: 1
+    expectErrors: [
+      '@stylistic/brace-style'
+    ]
   },
   {
-    name: 'brace-style-pass',
-    errorCount: 0
+    name: 'brace-style-pass'
   },
   {
-    name: 'quote-props-fail',
-    mustHave: ['@stylistic/quote-props'],
-    errorCount: 1
+    name: 'comma-dangle-fail',
+    expectErrors: [
+      '@stylistic/comma-dangle', // array
+      '@stylistic/comma-dangle' // object
+    ]
   },
   {
-    name: 'quote-props-pass',
-    errorCount: 0
+    name: 'comma-dangle-pass'
+  },
+  {
+    name: 'multi-spaces-fail',
+    expectErrors: [
+      '@stylistic/no-multi-spaces'
+    ]
   },
   {
     name: 'operator-linebreak-fail',
-    mustHave: ['@stylistic/operator-linebreak'],
-    errorCount: 3 // '+', '?', ':'
+    expectErrors: [
+      '@stylistic/operator-linebreak', // +
+      '@stylistic/operator-linebreak', // ?
+      '@stylistic/operator-linebreak' // :
+    ]
   },
   {
-    name: 'operator-linebreak-pass',
-    errorCount: 0
+    name: 'operator-linebreak-pass'
+  },
+  {
+    name: 'quote-props-fail',
+    expectErrors: [
+      '@stylistic/quote-props'
+    ]
+  },
+  {
+    name: 'quote-props-pass'
   },
   {
     name: 'space-fail',
-    mustHave: [
+    expectErrors: [
       '@stylistic/space-before-function-paren',
       '@stylistic/indent',
-      '@stylistic/space-in-parens'
-    ],
-    errorCount: 4
+      '@stylistic/space-in-parens', // after (
+      '@stylistic/space-in-parens' // before )
+    ]
   },
   {
-    name: 'space-pass',
-    errorCount: 0
+    name: 'space-pass'
   }
 ])

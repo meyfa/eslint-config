@@ -3,11 +3,11 @@ import { runFixtureTests } from '../fixtures.js'
 await runFixtureTests('base', [
   {
     name: 'radix-fail',
-    mustHave: ['radix'],
-    errorCount: 1
+    expectErrors: [
+      'radix'
+    ]
   },
   {
-    name: 'radix-pass',
-    errorCount: 0
+    name: 'radix-pass'
   }
 ])
