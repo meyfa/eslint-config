@@ -1,9 +1,9 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import tseslint from 'typescript-eslint'
-import jsdocConfig from '../src/jsdoc.ts'
+import jsdocConfig from '../../src/jsdoc.ts'
 
-const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..')
 
 export default [
   ...jsdocConfig,
@@ -12,7 +12,7 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: ['./test/tsconfig.eslint.json'],
+        project: ['./test/fixtures/tsconfig.eslint.json'],
         tsconfigRootDir: rootDir
       }
     }

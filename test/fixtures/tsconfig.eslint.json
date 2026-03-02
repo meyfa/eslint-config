@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["node"],
     "jsx": "preserve",
@@ -7,7 +7,7 @@
     "noEmit": true
   },
   "include": [
-    "__generated__/**/*.ts",
-    "__generated__/**/*.tsx"
+    "../__generated__/**/*.ts",
+    "../__generated__/**/*.tsx"
   ]
 }
