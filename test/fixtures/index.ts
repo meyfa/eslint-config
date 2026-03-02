@@ -5,10 +5,11 @@ import { test } from 'node:test'
 import { fileURLToPath } from 'node:url'
 import { ESLint } from 'eslint'
 
-const testDirectory = path.dirname(fileURLToPath(import.meta.url))
+const fixturesDirectory = path.dirname(fileURLToPath(import.meta.url))
+const testDirectory = path.dirname(fixturesDirectory)
 const rootDirectory = path.dirname(testDirectory)
 
-const defaultEslintConfigFile = path.join(testDirectory, 'eslint-test-config.js')
+const defaultEslintConfigFile = path.join(fixturesDirectory, 'eslint-test-config.js')
 const generatedFixturesDir = path.join(testDirectory, '__generated__')
 
 const fixtureExtensions = ['ts', 'tsx', 'js', 'jsx', 'mjs', 'cjs'] as const
@@ -68,8 +69,8 @@ export interface FixtureCase {
 
 export interface FixtureSuiteOptions {
   /**
-   * Path to an ESLint override config file, relative to the repo root.
-   * Defaults to `test/eslint-test-config.js`.
+   * Path to an ESLint override config file, relative to `test/fixtures/`.
+   * Defaults to `test/fixtures/eslint-test-config.js`.
    */
   readonly overrideConfigFile?: string
 }
@@ -178,7 +179,7 @@ async function lintInlineFixture (
   const overrideConfigFile = options.overrideConfigFile ?? defaultEslintConfigFile
   const overrideConfigFilePath = path.isAbsolute(overrideConfigFile)
     ? overrideConfigFile
-    : path.join(testDirectory, overrideConfigFile)
+    : path.join(fixturesDirectory, overrideConfigFile)
   const eslint = getEslint(overrideConfigFilePath)
 
   const filePath = path.join(generatedFixturesDir, suite, fileName)
