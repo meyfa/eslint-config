@@ -113,6 +113,10 @@ export default defineConfig({
       }
     ],
 
+    // Enforce using constructors for generic types instead of a type annotation.
+    // Example: `const map = new Map<string, number>()` instead of `const map: Map<string, number> = new Map()`.
+    '@typescript-eslint/consistent-generic-constructors': ['error', 'constructor'],
+
     // These would be a huge migration task at this time.
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
