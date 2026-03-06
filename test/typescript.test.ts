@@ -78,5 +78,24 @@ await runFixtureTests('typescript', [
     expectErrors: [
       '@typescript-eslint/no-floating-promises'
     ]
+  },
+  {
+    name: 'method-signature-style-fail',
+    code: dedent`
+      export interface Foo {
+        bar(): void
+      }
+    `,
+    expectErrors: [
+      '@typescript-eslint/method-signature-style'
+    ]
+  },
+  {
+    name: 'method-signature-style-pass',
+    code: dedent`
+      export interface Foo {
+        bar: () => void
+      }
+    `
   }
 ])
