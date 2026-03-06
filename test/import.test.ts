@@ -2,6 +2,32 @@ import { dedent, runFixtureTests } from './fixtures/index.js'
 
 await runFixtureTests('import', [
   {
+    name: 'consistent-type-specifier-style-fail',
+    code: dedent`
+      import { type TestContext, test } from 'node:test'
+
+      export function handle (t: TestContext): void {
+        void test
+        void t
+      }
+    `,
+    expectErrors: [
+      'import/consistent-type-specifier-style'
+    ]
+  },
+  {
+    name: 'consistent-type-specifier-style-pass',
+    code: dedent`
+      import type { TestContext } from 'node:test'
+      import { test } from 'node:test'
+
+      export function handle (t: TestContext): void {
+        void test
+        void t
+      }
+     `
+  },
+  {
     name: 'first-fail',
     code: dedent`
       import path from 'node:path'
@@ -66,7 +92,7 @@ await runFixtureTests('import', [
       import { Linter, ESLint } from 'eslint'
 
       void ESLint
-      void (null as unknown as Linter)
+      void Linter
     `,
     expectErrors: [
       'import/order'
@@ -85,5 +111,15 @@ await runFixtureTests('import', [
     expectErrors: [
       'import/order'
     ]
+  },
+  {
+    name: 'order-side-effects-pass',
+    code: dedent`
+      import 'foo'
+      import eslint from '@eslint/js'
+      import 'bar'
+
+      void eslint
+    `
   }
 ])
