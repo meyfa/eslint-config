@@ -6,8 +6,8 @@ import jsdocConfig from '../../src/jsdoc.ts'
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..')
 
 export default [
-  ...jsdocConfig,
   {
+    ...jsdocConfig,
     files: ['test/__generated__/**/*.{ts,tsx,js,jsx,mjs,cjs}'],
     languageOptions: {
       parser: tseslint.parser,
