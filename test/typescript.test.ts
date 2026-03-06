@@ -44,6 +44,23 @@ await runFixtureTests('typescript', [
     `
   },
   {
+    name: 'consistent-generic-constructors-fail',
+    code: dedent`
+      const map: Map<string, number> = new Map()
+      void map
+    `,
+    expectErrors: [
+      '@typescript-eslint/consistent-generic-constructors'
+    ]
+  },
+  {
+    name: 'consistent-generic-constructors-pass',
+    code: dedent`
+      const map = new Map<string, number>()
+      void map
+    `
+  },
+  {
     name: 'floating-promises-node-test-pass',
     code: dedent`
       import { test } from 'node:test'
