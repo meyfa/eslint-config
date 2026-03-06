@@ -1,6 +1,6 @@
 import eslint from '@eslint/js'
 import pluginStylistic from '@stylistic/eslint-plugin'
-import { Linter } from 'eslint'
+import type { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
 import pluginImport from 'eslint-plugin-import'
 import pluginNode from 'eslint-plugin-n'
@@ -102,8 +102,18 @@ export default defineConfig({
     // This allows using performance-optimized transpilers such as SWC, ESBuild, and similar.
     '@typescript-eslint/consistent-type-exports': 'error',
 
+    // Force using 'import type' for imports that only exist in the type system.
+    // If importing both types and values from the same module, the type imports should be separate from value imports.
+    // This helps to fully eliminate type-only imports instead of leaving unnecessary side effect-only imports in the emitted JavaScript.
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        fixStyle: 'separate-type-imports'
+      }
+    ],
+
     // These would be a huge migration task at this time.
-    '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
@@ -131,6 +141,7 @@ export default defineConfig({
       ignoreGlobals: true
     }],
 
+    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
     'import/export': 'error',
     'import/first': 'error',
     'import/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
