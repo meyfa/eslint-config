@@ -113,6 +113,9 @@ export default defineConfig({
       }
     ],
 
+    // Enforce methods to be declared via property syntax instead of method syntax.
+    '@typescript-eslint/method-signature-style': 'error',
+
     // These would be a huge migration task at this time.
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
