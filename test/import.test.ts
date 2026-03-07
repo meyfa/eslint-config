@@ -121,5 +121,47 @@ await runFixtureTests('import', [
 
       void eslint
     `
+  },
+  {
+    name: 'order-types-fail',
+    code: dedent`
+      // should be ordered by the source, not the type name
+      import type { TypeA } from 'foo-b'
+      import type { TypeB } from 'foo-a'
+
+      export const helper = (a: TypeA, b: TypeB): void => {}
+    `,
+    expectErrors: [
+      'import/order'
+    ]
+  },
+  {
+    name: 'order-types-pass',
+    code: dedent`
+      // should be ordered by the source, not the type name
+      import type { TypeB } from 'foo-a'
+      import type { TypeA } from 'foo-b'
+
+      export const helper = (a: TypeA, b: TypeB): void => {}
+    `
+  },
+  {
+    name: 'order-types-inside-fail',
+    code: dedent`
+      import type { TypeB, TypeA } from 'foo'
+
+      export const helper = (a: TypeA, b: TypeB): void => {}
+    `,
+    expectErrors: [
+      'import/order'
+    ]
+  },
+  {
+    name: 'order-types-inside-pass',
+    code: dedent`
+      import type { TypeA, TypeB } from 'foo'
+
+      export const helper = (a: TypeA, b: TypeB): void => {}
+    `
   }
 ])
