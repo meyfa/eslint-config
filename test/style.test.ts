@@ -1,4 +1,4 @@
-import { dedent, runFixtureTests } from './fixtures/index.js'
+import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('style', [
   {
