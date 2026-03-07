@@ -5,7 +5,7 @@ export default [
   {
     ignores: [
       'dist',
-      'test/fixtures',
+      'test/__generated__',
       '.idea',
       '.vscode'
     ]
