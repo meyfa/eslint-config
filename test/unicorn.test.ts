@@ -68,6 +68,16 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
+    name: 'no-useless-iterator-to-array-fail',
+    code: dedent`
+      const iterator = [1, 2, 3][Symbol.iterator]()
+      void new Set(iterator.toArray())
+    `,
+    expectErrors: [
+      'unicorn/no-useless-iterator-to-array'
+    ]
+  },
+  {
     name: 'prefer-node-protocol-fail',
     code: dedent`
       import 'fs'
