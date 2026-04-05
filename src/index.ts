@@ -192,6 +192,8 @@ export default defineConfig({
     'unicorn/no-useless-collection-argument': 'error',
     // Disallow useless fallback when spreading in object literals.
     'unicorn/no-useless-fallback-in-spread': 'error',
+    // Disallow useless Iterator.prototype.toArray() calls.
+    'unicorn/no-useless-iterator-to-array': 'error',
     // Prefer .at() method for index access and String#charAt().
     'unicorn/prefer-at': 'error',
     // Prefer Date.now() to get the number of milliseconds since the Unix Epoch.
