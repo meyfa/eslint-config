@@ -1,5 +1,58 @@
 # Changelog
 
+## [10.0.0](https://github.com/meyfa/eslint-config/compare/v9.0.0...v10.0.0) (2026-04-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* Enable no-useless-iterator-to-array rule ([#342](https://github.com/meyfa/eslint-config/issues/342))
+* **deps:** update dependency eslint-plugin-unicorn to v64 ([#341](https://github.com/meyfa/eslint-config/issues/341))
+* Enable method-signature-style rule ([#332](https://github.com/meyfa/eslint-config/issues/332))
+* Enforce consistency for type-only imports ([#329](https://github.com/meyfa/eslint-config/issues/329))
+* Add rule for prefix increment/decrement ([#323](https://github.com/meyfa/eslint-config/issues/323))
+* Enable curly rule to enforce braces ([#322](https://github.com/meyfa/eslint-config/issues/322))
+* Enable stylistic/jsx-wrap-multilines ([#320](https://github.com/meyfa/eslint-config/issues/320))
+* Enable JSX stylistic rules ([#318](https://github.com/meyfa/eslint-config/issues/318))
+* Enable import/order and import/newline-after-import ([#317](https://github.com/meyfa/eslint-config/issues/317))
+* Enable unicorn/no-useless-collection-argument ([#316](https://github.com/meyfa/eslint-config/issues/316))
+* Enable unicorn/isolated-functions ([#315](https://github.com/meyfa/eslint-config/issues/315))
+* **deps:** update dependency eslint-plugin-jsdoc to v62 ([#304](https://github.com/meyfa/eslint-config/issues/304))
+* **deps:** update dependency eslint-plugin-unicorn to v63 ([#307](https://github.com/meyfa/eslint-config/issues/307))
+* Require Node.js 22.18.0 or later ([#308](https://github.com/meyfa/eslint-config/issues/308))
+
+### Features
+
+* Add floating promise exception for node:test ([#319](https://github.com/meyfa/eslint-config/issues/319)) ([d99cf21](https://github.com/meyfa/eslint-config/commit/d99cf2134142a10ae6639a90d6f2db893c153f99))
+* Add rule for prefix increment/decrement ([#323](https://github.com/meyfa/eslint-config/issues/323)) ([7dd6dad](https://github.com/meyfa/eslint-config/commit/7dd6dad3e796c2c5fe78cbcf1eadee9ab6213378))
+* Enable 'unicorn/no-instanceof-builtins' ([#313](https://github.com/meyfa/eslint-config/issues/313)) ([d89e65d](https://github.com/meyfa/eslint-config/commit/d89e65d85d5dc52d9774b1a1ebfd9492f43f1c3a))
+* Enable curly rule to enforce braces ([#322](https://github.com/meyfa/eslint-config/issues/322)) ([6982942](https://github.com/meyfa/eslint-config/commit/6982942903c6538c09add19578ddc477fabc6df9))
+* Enable import/order and import/newline-after-import ([#317](https://github.com/meyfa/eslint-config/issues/317)) ([6cf579d](https://github.com/meyfa/eslint-config/commit/6cf579dd89e5351199b298455da75958c2550307))
+* Enable JSX stylistic rules ([#318](https://github.com/meyfa/eslint-config/issues/318)) ([6a0f984](https://github.com/meyfa/eslint-config/commit/6a0f984be1a98289f8e02b70fcecf37e91586bfe))
+* Enable method-signature-style rule ([#332](https://github.com/meyfa/eslint-config/issues/332)) ([32cf836](https://github.com/meyfa/eslint-config/commit/32cf8364a0758f080259cd2a9ee756bb80f9f383))
+* Enable no-useless-iterator-to-array rule ([#342](https://github.com/meyfa/eslint-config/issues/342)) ([9f9ee51](https://github.com/meyfa/eslint-config/commit/9f9ee513c04a61d225311de7fa2c60d21c0468df))
+* Enable stylistic/jsx-wrap-multilines ([#320](https://github.com/meyfa/eslint-config/issues/320)) ([9f66fd2](https://github.com/meyfa/eslint-config/commit/9f66fd2d11231745ba550b6289327ba3fd5bf90c))
+* Enable unicorn/isolated-functions ([#315](https://github.com/meyfa/eslint-config/issues/315)) ([bfba7cf](https://github.com/meyfa/eslint-config/commit/bfba7cf4f99b7b30b60e5206716b04e459ccc2df))
+* Enable unicorn/no-useless-collection-argument ([#316](https://github.com/meyfa/eslint-config/issues/316)) ([1b3fffe](https://github.com/meyfa/eslint-config/commit/1b3fffe6d246e35ff8051a8b8715d6c617f9658c))
+* Enforce consistency for type-only imports ([#329](https://github.com/meyfa/eslint-config/issues/329)) ([86e87a9](https://github.com/meyfa/eslint-config/commit/86e87a97505fbc1fb8c4e46b70c3c106bf59758d))
+
+
+### Bug Fixes
+
+* **deps:** update dependencies (non-major) ([#294](https://github.com/meyfa/eslint-config/issues/294)) ([034d586](https://github.com/meyfa/eslint-config/commit/034d586cf597bc312470e225f6127f49bab41b9d))
+* **deps:** update dependencies (non-major) ([#296](https://github.com/meyfa/eslint-config/issues/296)) ([a709bc5](https://github.com/meyfa/eslint-config/commit/a709bc548f89f0d92c658ec73c7402072c1de8e4))
+* **deps:** update dependencies (non-major) ([#338](https://github.com/meyfa/eslint-config/issues/338)) ([2f6d396](https://github.com/meyfa/eslint-config/commit/2f6d3967593812ee2cb20ccc54f8f25cd66cd941))
+* **deps:** update dependencies (non-major) ([#339](https://github.com/meyfa/eslint-config/issues/339)) ([eb41516](https://github.com/meyfa/eslint-config/commit/eb4151666c865c228d30ac22712e3d4fe3670c9a))
+* **deps:** update dependency @stylistic/eslint-plugin to v5.10.0 ([#328](https://github.com/meyfa/eslint-config/issues/328)) ([9e4f3aa](https://github.com/meyfa/eslint-config/commit/9e4f3aa7efcc1f1e142cc536fd8dfda9eb98fb9a))
+* **deps:** update dependency eslint-plugin-jsdoc to v62 ([#304](https://github.com/meyfa/eslint-config/issues/304)) ([958706d](https://github.com/meyfa/eslint-config/commit/958706d613921f1ce2cf44c3c43de2e034d45418))
+* **deps:** update dependency eslint-plugin-unicorn to v63 ([#307](https://github.com/meyfa/eslint-config/issues/307)) ([1a75524](https://github.com/meyfa/eslint-config/commit/1a7552402e501cc0c3562b35ab245bc23ae756cc))
+* **deps:** update dependency eslint-plugin-unicorn to v64 ([#341](https://github.com/meyfa/eslint-config/issues/341)) ([40a3b92](https://github.com/meyfa/eslint-config/commit/40a3b92a7d0c7a5dbd5a389dcd0d6241d30cc9b5))
+* Restore documented JSDoc export behavior ([#333](https://github.com/meyfa/eslint-config/issues/333)) ([9e0dcb5](https://github.com/meyfa/eslint-config/commit/9e0dcb5dbaf934b958ec329fdba900f5fe61dd72))
+
+
+### Miscellaneous Chores
+
+* Require Node.js 22.18.0 or later ([#308](https://github.com/meyfa/eslint-config/issues/308)) ([2d0dbcd](https://github.com/meyfa/eslint-config/commit/2d0dbcda9ebf40e72e6a79fca5ece66b53f4c2d7))
+
 ## [9.0.0](https://github.com/meyfa/eslint-config/compare/v8.0.1...v9.0.0) (2025-09-21)
 
 
