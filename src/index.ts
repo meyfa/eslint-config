@@ -213,6 +213,12 @@ export default defineConfig({
     // Require braces for all control statements.
     curly: ['error', 'all'],
 
+    // Prefer `{ foo }` over `{ foo: foo }` (including destructuring).
+    'object-shorthand': ['error', 'always'],
+
+    // Prevent useless renames like `const { foo: foo } = obj`.
+    'no-useless-rename': 'error',
+
     // Enforce the consistent use of the radix argument when using parseInt().
     radix: 'error',
 
