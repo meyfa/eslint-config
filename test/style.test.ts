@@ -2,6 +2,83 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('style', [
   {
+    name: 'object-shorthand-construction-fail',
+    code: dedent`
+      const foo = 1
+      void { foo: foo }
+    `,
+    expectErrors: [
+      'object-shorthand'
+    ]
+  },
+  {
+    name: 'object-shorthand-construction-pass',
+    code: dedent`
+      const foo = 1
+      void { foo }
+    `
+  },
+  {
+    name: 'object-shorthand-construction-pass-renamed',
+    code: dedent`
+      const bar = 1
+      void { foo: bar }
+    `
+  },
+  {
+    name: 'object-shorthand-destructuring-fail',
+    code: dedent`
+      const obj = { foo: 1 }
+      const { foo: foo } = obj
+      void foo
+    `,
+    expectErrors: [
+      'no-useless-rename'
+    ]
+  },
+  {
+    name: 'object-shorthand-destructuring-pass',
+    code: dedent`
+      const obj = { foo: 1 }
+      const { foo } = obj
+      void foo
+    `
+  },
+  {
+    name: 'object-shorthand-destructuring-pass-renamed',
+    code: dedent`
+      const obj = { foo: 1 }
+      const { foo: bar } = obj
+      void bar
+    `
+  },
+  {
+    name: 'object-shorthand-methods-fail',
+    code: dedent`
+      const obj = {
+        foo: function (): void {}
+      }
+      void obj
+    `,
+    expectErrors: [
+      'object-shorthand'
+    ]
+  },
+  {
+    name: 'object-shorthand-methods-pass',
+    code: dedent`
+      const obj = {
+        foo (): void {}
+      }
+      void obj
+
+      const arrowObj = {
+        foo: (): void => {}
+      }
+      void arrowObj
+    `
+  },
+  {
     name: 'arrow-parens-fail',
     code: dedent`
       const helper = (fn: (arg: string) => void) => fn('test')
