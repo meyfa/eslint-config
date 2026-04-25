@@ -149,5 +149,19 @@ await runFixtureTests('unicorn', [
     expectErrors: [
       'unicorn/throw-new-error'
     ]
+  },
+  {
+    name: 'switch-case-break-position-fail',
+    code: dedent`
+      switch (Math.random()) {
+        case 0: {
+          void 0
+        }
+          break
+      }
+    `,
+    expectErrors: [
+      'unicorn/switch-case-break-position'
+    ]
   }
 ])
