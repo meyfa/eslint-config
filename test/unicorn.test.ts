@@ -28,9 +28,15 @@ await runFixtureTests('unicorn', [
     name: 'no-instanceof-builtins-fail',
     code: dedent`
       const value: any = [1, 2, 3]
-      if (value instanceof Array) { ; }
-      if (value instanceof Function) { ; }
-      if (value instanceof String) { ; }
+      if (value instanceof Array) {
+        ;
+      }
+      if (value instanceof Function) {
+        ;
+      }
+      if (value instanceof String) {
+        ;
+      }
     `,
     expectErrors: [
       'unicorn/no-instanceof-builtins', // Array
@@ -42,7 +48,9 @@ await runFixtureTests('unicorn', [
     name: 'no-typeof-undefined-fail',
     code: dedent`
       let value: string | undefined
-      if (typeof value === 'undefined') { ; }
+      if (typeof value === 'undefined') {
+        ;
+      }
     `,
     expectErrors: [
       'unicorn/no-typeof-undefined'

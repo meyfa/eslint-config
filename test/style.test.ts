@@ -293,7 +293,9 @@ await runFixtureTests('style', [
     name: 'max-statements-per-line-fail',
     code: dedent`
       export function foo (): void {
-        if (Math.random() > 0.5) { return 'foo' }
+        const first = 'foo'; const second = 'bar'
+        void first
+        void second
       }
     `,
     expectErrors: [
@@ -358,12 +360,24 @@ await runFixtureTests('style', [
   {
     name: 'prefix-increment-for-fail',
     code: dedent`
-      for (let i = 0; i < 3; i++) { ; }
-      for (let j = 3; j > 0; j--) { ; }
-      for (let a = 0, b = 0; a < 3; a++, ++b) { ; }
-      for (let c = 3, d = 3; c > 0; c--, --d) { ; }
-      for (let e = 0, f = 0; e < 3; ++e, f++) { ; }
-      for (let g = 3, h = 3; g > 0; --g, h--) { ; }
+      for (let i = 0; i < 3; i++) {
+        ;
+      }
+      for (let j = 3; j > 0; j--) {
+        ;
+      }
+      for (let a = 0, b = 0; a < 3; a++, ++b) {
+        ;
+      }
+      for (let c = 3, d = 3; c > 0; c--, --d) {
+        ;
+      }
+      for (let e = 0, f = 0; e < 3; ++e, f++) {
+        ;
+      }
+      for (let g = 3, h = 3; g > 0; --g, h--) {
+        ;
+      }
     `,
     expectErrors: [
       'no-restricted-syntax', // i++
@@ -377,10 +391,18 @@ await runFixtureTests('style', [
   {
     name: 'prefix-increment-for-pass',
     code: dedent`
-      for (let i = 0; i < 3; ++i) { ; }
-      for (let j = 3; j > 0; --j) { ; }
-      for (let a = 0, b = 0; a < 3; ++a, ++b) { ; }
-      for (let c = 3, d = 3; c > 0; --c, --d) { ; }
+      for (let i = 0; i < 3; ++i) {
+        ;
+      }
+      for (let j = 3; j > 0; --j) {
+        ;
+      }
+      for (let a = 0, b = 0; a < 3; ++a, ++b) {
+        ;
+      }
+      for (let c = 3, d = 3; c > 0; --c, --d) {
+        ;
+      }
 
       export function suffixOutsideForLoopIsOk (): number {
         let k = 0
@@ -399,7 +421,9 @@ await runFixtureTests('style', [
 
       export function suffixInsideForConditionIsOk (): number {
         let p = 0
-        for (let i = 0; p++ < 3; ++i) { ; }
+        for (let i = 0; p++ < 3; ++i) {
+          ;
+        }
         return p
       }
     `
@@ -453,6 +477,95 @@ await runFixtureTests('style', [
       foo('test')
       function foo (arg: string): string {
         return arg
+      }
+    `
+  },
+  {
+    name: 'curly-newline-try-catch-pass',
+    code: dedent`
+      try {
+        void 0
+      } catch {}
+    `
+  },
+  {
+    name: 'curly-newline-arrow-pass',
+    code: dedent`
+      const fn = () => {
+        return Math.random()
+      }
+      void fn
+    `
+  },
+  {
+    name: 'curly-newline-arrow-empty-pass',
+    code: dedent`
+      const fn = () => {}
+      void fn
+    `
+  },
+  {
+    name: 'curly-newline-block-comment-pass',
+    code: dedent`
+      if (Math.random() > 0.5) { /* skip */ }
+    `
+  },
+  {
+    name: 'curly-newline-block-statement-pass',
+    code: dedent`
+      if (Math.random() > 0.5) {
+        void 0
+      }
+    `
+  },
+  {
+    name: 'curly-newline-switch-start-before-fail',
+    code: dedent`
+      switch (Math.random()) {
+        case 0:
+        { void 0
+          break
+        }
+      }
+    `,
+    expectErrors: [
+      '@stylistic/curly-newline'
+    ]
+  },
+  {
+    name: 'curly-newline-switch-start-after-fail',
+    code: dedent`
+      switch (Math.random()) {
+        case 0: { void 0
+          break
+        }
+      }
+    `,
+    expectErrors: [
+      '@stylistic/curly-newline'
+    ]
+  },
+  {
+    name: 'curly-newline-switch-end-fail',
+    code: dedent`
+      switch (Math.random()) {
+        case 0: {
+          void 0
+          break }
+      }
+    `,
+    expectErrors: [
+      '@stylistic/curly-newline'
+    ]
+  },
+  {
+    name: 'curly-newline-switch-pass',
+    code: dedent`
+      switch (Math.random()) {
+        case 0: {
+          void 0
+          break
+        }
       }
     `
   }
