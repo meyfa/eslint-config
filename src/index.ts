@@ -209,6 +209,8 @@ export default defineConfig({
     'unicorn/require-array-join-separator': 'error',
     // Require new when throwing an error.
     'unicorn/throw-new-error': 'error',
+    // Enforce that terminating statements appear inside the block statement of a case clause, not after it.
+    'unicorn/switch-case-break-position': 'error',
 
     // Require braces for all control statements.
     curly: ['error', 'all'],
