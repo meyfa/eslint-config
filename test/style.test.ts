@@ -568,5 +568,81 @@ await runFixtureTests('style', [
         }
       }
     `
+  },
+  {
+    name: 'object-curly-newline-pass',
+    code: dedent`
+      import { import1, import2 } from 'foo'
+
+      const { a } = { a: import1 }
+      const {
+        b
+      } = {
+        b: import2
+      }
+
+      const export1 = { a }
+      const export2 = {
+        b
+      }
+
+      export { export1 }
+      export {
+        export2
+      }
+    `
+  },
+  {
+    name: 'object-curly-newline-object-fail',
+    code: dedent`
+      const foo = { a: 1
+      }
+      void foo
+    `,
+    expectErrors: [
+      '@stylistic/object-curly-newline'
+    ]
+  },
+  {
+    name: 'object-curly-newline-pattern-fail',
+    code: dedent`
+      const { a,
+        b } = { a: 1, b: 2 }
+
+      void a
+      void b
+    `,
+    expectErrors: [
+      '@stylistic/object-curly-newline',
+      '@stylistic/object-curly-newline'
+    ]
+  },
+  {
+    name: 'object-curly-newline-import-fail',
+    code: dedent`
+      import { import1,
+        import2 } from 'baz'
+
+      void import1
+      void import2
+    `,
+    expectErrors: [
+      '@stylistic/object-curly-newline',
+      '@stylistic/object-curly-newline'
+    ]
+  },
+  {
+    name: 'object-curly-newline-export-fail',
+    code: dedent`
+      const export1 = 1
+      const export2 = 2
+
+      export { export1,
+        export2 }
+    `,
+    expectErrors: [
+      '@stylistic/object-curly-newline',
+      '@stylistic/object-curly-newline'
+    ]
   }
 ])
