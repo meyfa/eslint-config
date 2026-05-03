@@ -47,6 +47,10 @@ export default defineConfig({
       minElements: 1,
       consistent: true
     }],
+    '@stylistic/object-curly-newline': ['error', {
+      multiline: true,
+      consistent: true
+    }],
 
     '@stylistic/jsx-closing-bracket-location': ['error'],
     '@stylistic/jsx-closing-tag-location': ['error'],
