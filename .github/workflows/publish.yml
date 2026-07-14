@@ -1,13 +1,17 @@
+name: Publish
+
 on:
   push:
     branches:
       - main
 
-name: release-please
-
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
     steps:
@@ -18,7 +22,7 @@ jobs:
 
   npm-publish:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ needs['release-please'].outputs.release_created }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,7 +33,6 @@ jobs:
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
       - run: npm ci
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm publish
