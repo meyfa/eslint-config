@@ -5,7 +5,7 @@ await runFixtureTests('typescript', [
     name: 'explicit-any-pass',
     code: dedent`
       const value: any = 123
-      void value
+      console.log(value)
     `
   },
   {
@@ -14,7 +14,7 @@ await runFixtureTests('typescript', [
       import { TestContext } from 'node:test'
 
       export function handle (t: TestContext): void {
-        void t
+        console.log(t)
       }
     `,
     expectErrors: [
@@ -27,7 +27,7 @@ await runFixtureTests('typescript', [
       import type { TestContext } from 'node:test'
 
       export function handle (t: TestContext): void {
-        void t
+        console.log(t)
       }
     `
   },
@@ -38,8 +38,7 @@ await runFixtureTests('typescript', [
       import { test } from 'node:test'
 
       export function handle (t: TestContext): void {
-        void test
-        void t
+        console.log(test, t)
       }
     `
   },
@@ -47,7 +46,7 @@ await runFixtureTests('typescript', [
     name: 'consistent-generic-constructors-fail',
     code: dedent`
       const map: Map<string, number> = new Map()
-      void map
+      console.log(map)
     `,
     expectErrors: [
       '@typescript-eslint/consistent-generic-constructors'
@@ -57,7 +56,7 @@ await runFixtureTests('typescript', [
     name: 'consistent-generic-constructors-pass',
     code: dedent`
       const map = new Map<string, number>()
-      void map
+      console.log(map)
     `
   },
   {
@@ -96,6 +95,23 @@ await runFixtureTests('typescript', [
       export interface Foo {
         bar: () => void
       }
+    `
+  },
+  {
+    name: 'no-meaningless-void-operator-fail',
+    code: dedent`
+      const value = 123
+      void value
+    `,
+    expectErrors: [
+      '@typescript-eslint/no-meaningless-void-operator'
+    ]
+  },
+  {
+    name: 'no-meaningless-void-operator-call-pass',
+    code: dedent`
+      const promise = Promise.resolve(123)
+      void promise
     `
   }
 ])

@@ -5,7 +5,7 @@ await runFixtureTests('style', [
     name: 'object-shorthand-construction-fail',
     code: dedent`
       const foo = 1
-      void { foo: foo }
+      console.log({ foo: foo })
     `,
     expectErrors: [
       'object-shorthand'
@@ -15,14 +15,14 @@ await runFixtureTests('style', [
     name: 'object-shorthand-construction-pass',
     code: dedent`
       const foo = 1
-      void { foo }
+      console.log({ foo })
     `
   },
   {
     name: 'object-shorthand-construction-pass-renamed',
     code: dedent`
       const bar = 1
-      void { foo: bar }
+      console.log({ foo: bar })
     `
   },
   {
@@ -30,7 +30,7 @@ await runFixtureTests('style', [
     code: dedent`
       const obj = { foo: 1 }
       const { foo: foo } = obj
-      void foo
+      console.log(foo)
     `,
     expectErrors: [
       'no-useless-rename'
@@ -41,7 +41,7 @@ await runFixtureTests('style', [
     code: dedent`
       const obj = { foo: 1 }
       const { foo } = obj
-      void foo
+      console.log(foo)
     `
   },
   {
@@ -49,7 +49,7 @@ await runFixtureTests('style', [
     code: dedent`
       const obj = { foo: 1 }
       const { foo: bar } = obj
-      void bar
+      console.log(bar)
     `
   },
   {
@@ -58,7 +58,7 @@ await runFixtureTests('style', [
       const obj = {
         foo: function (): void {}
       }
-      void obj
+      console.log(obj)
     `,
     expectErrors: [
       'object-shorthand'
@@ -70,12 +70,12 @@ await runFixtureTests('style', [
       const obj = {
         foo (): void {}
       }
-      void obj
+      console.log(obj)
 
       const arrowObj = {
         foo: (): void => {}
       }
-      void arrowObj
+      console.log(arrowObj)
     `
   },
   {
@@ -124,15 +124,15 @@ await runFixtureTests('style', [
   {
     name: 'comma-dangle-fail',
     code: dedent`
-      void [
+      console.log([
         1,
         2,
-      ]
+      ])
 
-      void {
+      console.log({
         a: 1,
         b: 2,
-      }
+      })
     `,
     expectErrors: [
       '@stylistic/comma-dangle', // array
@@ -142,15 +142,15 @@ await runFixtureTests('style', [
   {
     name: 'comma-dangle-pass',
     code: dedent`
-      void [
+      console.log([
         1,
         2
-      ]
+      ])
 
-      void {
+      console.log({
         a: 1,
         b: 2
-      }
+      })
     `
   },
   {
@@ -294,8 +294,7 @@ await runFixtureTests('style', [
     code: dedent`
       export function foo (): void {
         const first = 'foo'; const second = 'bar'
-        void first
-        void second
+        console.log(first, second)
       }
     `,
     expectErrors: [
@@ -316,12 +315,12 @@ await runFixtureTests('style', [
     code: dedent`
       const foo = 'hello'
         + 'world'
-      void foo
+      console.log(foo)
 
       const bar = foo === 'helloworld' ?
         'yes' :
         'no'
-      void bar
+      console.log(bar)
     `,
     expectErrors: [
       '@stylistic/operator-linebreak', // +
@@ -334,18 +333,18 @@ await runFixtureTests('style', [
     code: dedent`
       const foo = 'hello' +
         'world'
-      void foo
+      console.log(foo)
 
       const bar = foo === 'helloworld'
         ? 'yes'
         : 'no'
-      void bar
+      console.log(bar)
     `
   },
   {
     name: 'quote-props-fail',
     code: dedent`
-      void { 'a': 1 }
+      console.log({ 'a': 1 })
     `,
     expectErrors: [
       '@stylistic/quote-props'
@@ -354,7 +353,7 @@ await runFixtureTests('style', [
   {
     name: 'quote-props-pass',
     code: dedent`
-      void { 'a-b': 1 }
+      console.log({ 'a-b': 1 })
     `
   },
   {
@@ -498,14 +497,14 @@ await runFixtureTests('style', [
       const fn = () => {
         return Math.random()
       }
-      void fn
+      console.log(fn)
     `
   },
   {
     name: 'curly-newline-arrow-empty-pass',
     code: dedent`
       const fn = () => {}
-      void fn
+      console.log(fn)
     `
   },
   {
@@ -601,7 +600,7 @@ await runFixtureTests('style', [
     code: dedent`
       const foo = { a: 1
       }
-      void foo
+      console.log(foo)
     `,
     expectErrors: [
       '@stylistic/object-curly-newline'
@@ -613,8 +612,7 @@ await runFixtureTests('style', [
       const { a,
         b } = { a: 1, b: 2 }
 
-      void a
-      void b
+      console.log(a, b)
     `,
     expectErrors: [
       '@stylistic/object-curly-newline',
@@ -627,8 +625,7 @@ await runFixtureTests('style', [
       import { import1,
         import2 } from 'baz'
 
-      void import1
-      void import2
+      console.log(import1, import2)
     `,
     expectErrors: [
       '@stylistic/object-curly-newline',
