@@ -7,8 +7,7 @@ await runFixtureTests('import', [
       import { type TestContext, test } from 'node:test'
 
       export function handle (t: TestContext): void {
-        void test
-        void t
+        console.log(test, t)
       }
     `,
     expectErrors: [
@@ -22,8 +21,7 @@ await runFixtureTests('import', [
       import { test } from 'node:test'
 
       export function handle (t: TestContext): void {
-        void test
-        void t
+        console.log(test, t)
       }
      `
   },
@@ -32,10 +30,10 @@ await runFixtureTests('import', [
     code: dedent`
       import path from 'node:path'
 
-      void path // this should come after all the imports
+      console.log(path) // this should come after all the imports
       import { ESLint } from 'eslint'
 
-      void ESLint
+      console.log(ESLint)
     `,
     expectErrors: [
       'import-x/order',
@@ -46,7 +44,7 @@ await runFixtureTests('import', [
     name: 'newline-after-import-fail',
     code: dedent`
       import path from 'node:path'
-      void path
+      console.log(path)
     `,
     expectErrors: [
       'import-x/newline-after-import'
@@ -57,7 +55,7 @@ await runFixtureTests('import', [
     code: dedent`
       import path from 'node:path'
 
-      void path
+      console.log(path)
     `
   },
   {
@@ -66,8 +64,7 @@ await runFixtureTests('import', [
       import { ESLint } from 'eslint'
       import path from 'node:path'
 
-      void ESLint
-      void path
+      console.log(ESLint, path)
     `,
     expectErrors: [
       'import-x/order'
@@ -79,8 +76,7 @@ await runFixtureTests('import', [
       import tseslint from 'typescript-eslint'
       import eslint from '@eslint/js'
 
-      void tseslint
-      void eslint
+      console.log(tseslint, eslint)
     `,
     expectErrors: [
       'import-x/order'
@@ -91,8 +87,7 @@ await runFixtureTests('import', [
     code: dedent`
       import { Linter, ESLint } from 'eslint'
 
-      void ESLint
-      void Linter
+      console.log(ESLint, Linter)
     `,
     expectErrors: [
       'import-x/order'
@@ -105,8 +100,7 @@ await runFixtureTests('import', [
 
       import tseslint from 'typescript-eslint'
 
-      void eslint
-      void tseslint
+      console.log(eslint, tseslint)
     `,
     expectErrors: [
       'import-x/order'
@@ -119,7 +113,7 @@ await runFixtureTests('import', [
       import eslint from '@eslint/js'
       import 'bar'
 
-      void eslint
+      console.log(eslint)
     `
   },
   {

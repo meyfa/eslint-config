@@ -70,7 +70,7 @@ await runFixtureTests('unicorn', [
     name: 'no-useless-fallback-in-spread-fail',
     code: dedent`
       const maybeObject: Record<string, number> | undefined
-      void { ...(maybeObject ?? {}) }
+      console.log({ ...(maybeObject ?? {}) })
     `,
     expectErrors: [
       'unicorn/no-useless-fallback-in-spread'
@@ -80,7 +80,7 @@ await runFixtureTests('unicorn', [
     name: 'no-useless-iterator-to-array-fail',
     code: dedent`
       const iterator = [1, 2, 3][Symbol.iterator]()
-      void new Set(iterator.toArray())
+      console.log(new Set(iterator.toArray()))
     `,
     expectErrors: [
       'unicorn/no-useless-iterator-to-array'
@@ -105,7 +105,7 @@ await runFixtureTests('unicorn', [
     name: 'prefer-at-fail',
     code: dedent`
       const values = [1, 2, 3]
-      void values[values.length - 1]
+      console.log(values[values.length - 1])
     `,
     expectErrors: [
       'unicorn/prefer-at'
