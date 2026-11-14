@@ -2,7 +2,7 @@ import eslint from '@eslint/js'
 import pluginStylistic from '@stylistic/eslint-plugin'
 import type { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
-import pluginImport from 'eslint-plugin-import'
+import pluginImportX from 'eslint-plugin-import-x'
 import pluginNode from 'eslint-plugin-n'
 import pluginPromise from 'eslint-plugin-promise'
 import pluginUnicorn from 'eslint-plugin-unicorn'
@@ -24,7 +24,7 @@ export default defineConfig({
   ],
 
   plugins: {
-    import: pluginImport,
+    'import-x': pluginImportX,
     n: pluginNode,
     promise: pluginPromise,
     '@stylistic': pluginStylistic,
@@ -153,13 +153,13 @@ export default defineConfig({
       ignoreGlobals: true
     }],
 
-    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
-    'import/export': 'error',
-    'import/first': 'error',
-    'import/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
-    'import/no-duplicates': 'error',
-    'import/no-named-default': 'error',
-    'import/order': ['error', {
+    'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+    'import-x/export': 'error',
+    'import-x/first': 'error',
+    'import-x/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
+    'import-x/no-duplicates': 'error',
+    'import-x/no-named-default': 'error',
+    'import-x/order': ['error', {
       alphabetize: {
         order: 'asc',
         caseInsensitive: false
@@ -170,12 +170,12 @@ export default defineConfig({
       },
       'newlines-between': 'never'
     }],
-    'import/newline-after-import': ['error', { count: 1 }],
-    'import/no-webpack-loader-syntax': 'error',
+    'import-x/newline-after-import': ['error', { count: 1 }],
+    'import-x/no-webpack-loader-syntax': 'error',
 
     // ES modules require a file extension on every import.
     // NPM packages should be exempted. For example, we want to allow extensionless imports from 'preact/hooks'.
-    'import/extensions': ['error', 'always', { ignorePackages: true }],
+    'import-x/extensions': ['error', 'always', { ignorePackages: true }],
 
     'n/handle-callback-err': ['error', '^(err|error)$'],
     'n/no-callback-literal': 'error',
