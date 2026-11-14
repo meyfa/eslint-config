@@ -12,7 +12,7 @@ await runFixtureTests('import', [
       }
     `,
     expectErrors: [
-      'import/consistent-type-specifier-style'
+      'import-x/consistent-type-specifier-style'
     ]
   },
   {
@@ -38,8 +38,8 @@ await runFixtureTests('import', [
       void ESLint
     `,
     expectErrors: [
-      'import/order',
-      'import/first'
+      'import-x/order',
+      'import-x/first'
     ]
   },
   {
@@ -49,7 +49,7 @@ await runFixtureTests('import', [
       void path
     `,
     expectErrors: [
-      'import/newline-after-import'
+      'import-x/newline-after-import'
     ]
   },
   {
@@ -70,7 +70,7 @@ await runFixtureTests('import', [
       void path
     `,
     expectErrors: [
-      'import/order'
+      'import-x/order'
     ]
   },
   {
@@ -83,7 +83,7 @@ await runFixtureTests('import', [
       void eslint
     `,
     expectErrors: [
-      'import/order'
+      'import-x/order'
     ]
   },
   {
@@ -95,7 +95,7 @@ await runFixtureTests('import', [
       void Linter
     `,
     expectErrors: [
-      'import/order'
+      'import-x/order'
     ]
   },
   {
@@ -109,7 +109,7 @@ await runFixtureTests('import', [
       void tseslint
     `,
     expectErrors: [
-      'import/order'
+      'import-x/order'
     ]
   },
   {
@@ -132,7 +132,7 @@ await runFixtureTests('import', [
       export const helper = (a: TypeA, b: TypeB): void => {}
     `,
     expectErrors: [
-      'import/order'
+      'import-x/order'
     ]
   },
   {
@@ -153,7 +153,7 @@ await runFixtureTests('import', [
       export const helper = (a: TypeA, b: TypeB): void => {}
     `,
     expectErrors: [
-      'import/order'
+      'import-x/order'
     ]
   },
   {
