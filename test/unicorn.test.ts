@@ -47,9 +47,10 @@ await runFixtureTests('unicorn', [
   {
     name: 'no-typeof-undefined-fail',
     code: dedent`
-      let value: string | undefined
-      if (typeof value === 'undefined') {
-        ;
+      export function checkUndefined (value: string | undefined): void {
+        if (typeof value === 'undefined') {
+          ;
+        }
       }
     `,
     expectErrors: [

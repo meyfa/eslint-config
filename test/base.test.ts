@@ -16,7 +16,7 @@ await runFixtureTests('base', [
         while (keepGoing) keepGoing = false
 
         const next = (): boolean => Math.random() > 0.5
-        let keepGoing2 = foo
+        let keepGoing2: boolean
         do keepGoing2 = next(); while (keepGoing2)
       }
     `,
@@ -50,7 +50,7 @@ await runFixtureTests('base', [
         }
 
         const next = (): boolean => Math.random() > 0.5
-        let keepGoing2 = foo
+        let keepGoing2: boolean
         do {
           keepGoing2 = next()
         } while (keepGoing2)
