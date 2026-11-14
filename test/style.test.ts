@@ -407,16 +407,20 @@ await runFixtureTests('style', [
       export function suffixOutsideForLoopIsOk (): number {
         let k = 0
         const j = k++
+        if (k !== j + 1) {
+          throw new Error('Postfix increment should advance k after capturing its previous value')
+        }
         return j
       }
 
       export function suffixInsideForBodyIsOk (): number {
         let m = 0
+        let total = 0
         for (let i = 0; i < 3; ++i) {
           const n = m++
-          m = n
+          total += n
         }
-        return m
+        return m - total
       }
 
       export function suffixInsideForConditionIsOk (): number {

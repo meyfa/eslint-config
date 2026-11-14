@@ -9,7 +9,7 @@ ESLint config for personal TypeScript projects.
 Install ESLint, as well as this package (`-DE` means `--save-dev --save-exact`):
 
 ```sh
-npm install -DE eslint@9 @meyfa/eslint-config
+npm install -DE eslint@10 @meyfa/eslint-config
 ```
 
 Then in the `eslint.config.js`:
