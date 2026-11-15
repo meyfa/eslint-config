@@ -187,39 +187,87 @@ export default defineConfig({
 
     'promise/param-names': 'error',
 
-    // Prevent usage of variables from outside the scope of isolated functions
-    'unicorn/isolated-functions': 'error',
     // Prefer 'node:' protocol imports for Node.js built-in modules.
     'unicorn/prefer-node-protocol': 'error',
+    // Prevent usage of variables from outside the scope of isolated functions
+    'unicorn/isolated-functions': 'error',
+    // Disallow calling functions with an invalid number of arguments.
+    'unicorn/no-invalid-argument-count': 'error',
+    // Prefer block statements over IIFEs used only for scoping.
+    'unicorn/prefer-block-statement-over-iife': 'error',
+    // Enforce consistent labels on tuple type elements.
+    'unicorn/consistent-tuple-labels': 'error',
     // Enforce correct Error subclassing.
     'unicorn/custom-error-definition': 'error',
-    // Require Array.isArray() instead of instanceof Array.
-    'unicorn/no-instanceof-builtins': 'error',
+    // Require new when throwing an error.
+    'unicorn/throw-new-error': 'error',
+    // Disallow calling Promise executor resolver functions more than once on the same execution path.
+    'unicorn/no-multiple-promise-resolver-calls': 'error',
+    // Disallow reading Promise.allSettled() values without checking their status.
+    'unicorn/no-unsafe-promise-all-settled-values': 'error',
+    // Prefer queueMicrotask() over process.nextTick(), setImmediate(), and setTimeout(..., 0).
+    'unicorn/prefer-queue-microtask': 'error',
+    // Enforce that terminating statements appear inside the block statement of a case clause, not after it.
+    'unicorn/switch-case-break-position': 'error',
     // Disallow comparing undefined using typeof.
     'unicorn/no-typeof-undefined': 'error',
-    // Disallow useless values or fallbacks in Set, Map, WeakSet, or WeakMap.
-    'unicorn/no-useless-collection-argument': 'error',
-    // Disallow useless fallback when spreading in object literals.
-    'unicorn/no-useless-fallback-in-spread': 'error',
-    // Disallow useless Iterator.prototype.toArray() calls.
-    'unicorn/no-useless-iterator-to-array': 'error',
-    // Prefer .at() method for index access and String#charAt().
-    'unicorn/prefer-at': 'error',
-    // Prefer Date.now() to get the number of milliseconds since the Unix Epoch.
-    'unicorn/prefer-date-now': 'error',
+    // Require Array.isArray() instead of instanceof Array.
+    'unicorn/no-instanceof-builtins': 'error',
     // Prefer Number static properties over global ones.
     'unicorn/prefer-number-properties': [
       'error',
       { checkInfinity: false }
     ],
-    // Prefer String#slice() over String#substr() and String#substring().
-    'unicorn/prefer-string-slice': 'error',
+    // Prefer Number.isSafeInteger() over integer checks.
+    'unicorn/prefer-number-is-safe-integer': 'error',
+    // Disallow unsafe values as property keys.
+    'unicorn/no-unsafe-property-key': 'error',
+    // Prefer flat Math.min() and Math.max() calls over nested calls.
+    'unicorn/prefer-flat-math-min-max': 'error',
+    // Prefer Date.now() to get the number of milliseconds since the Unix Epoch.
+    'unicorn/prefer-date-now': 'error',
+    // Disallow useless values or fallbacks in Set, Map, WeakSet, or WeakMap.
+    'unicorn/no-useless-collection-argument': 'error',
+    // Disallow checking a Map key before accessing a different key.
+    'unicorn/no-mismatched-map-key': 'error',
+    // Prefer Set methods for Set operations.
+    'unicorn/prefer-set-methods': 'error',
+    // Disallow unnecessary Set construction around Set methods.
+    'unicorn/no-useless-set-construction': 'error',
+    // Disallow ignoring the return value of selected built-in methods.
+    'unicorn/no-unused-builtin-method-return': 'error',
+    // Disallow useless fallback when spreading in object literals.
+    'unicorn/no-useless-fallback-in-spread': 'error',
+    // Disallow .fill() after Array.from({length: ...}).
+    'unicorn/no-array-from-fill': 'error',
+    // Prefer using the Array.from() mapping function argument.
+    'unicorn/prefer-array-from-map': 'error',
+    // Disallow array accumulation with Array#concat() in loops.
+    'unicorn/no-array-concat-in-loop': 'error',
+    // Disallow mutating a loop iterable during iteration.
+    'unicorn/no-loop-iterable-mutation': 'error',
+    // Prefer iterating an array directly or with Array#keys() over Array#entries() when the index or value is unused.
+    'unicorn/prefer-array-iterable-methods': 'error',
+    // Prefer direct iteration over default iterator method calls.
+    'unicorn/prefer-direct-iteration': 'error',
+    // Prefer iterator helpers over temporary arrays from iterators.
+    'unicorn/prefer-iterator-helpers': 'error',
+    // Disallow useless Iterator.prototype.toArray() calls.
+    'unicorn/no-useless-iterator-to-array': 'error',
     // Enforce using the separator argument with Array#join().
     'unicorn/require-array-join-separator': 'error',
-    // Require new when throwing an error.
-    'unicorn/throw-new-error': 'error',
-    // Enforce that terminating statements appear inside the block statement of a case clause, not after it.
-    'unicorn/switch-case-break-position': 'error',
+    // Prefer .at() method for index access and String#charAt().
+    'unicorn/prefer-at': 'error',
+    // Prefer String#split() with a limit.
+    'unicorn/prefer-split-limit': 'error',
+    // Prefer String#slice() over String#substr() and String#substring().
+    'unicorn/prefer-string-slice': 'error',
+    // Disallow String#trim() before String#startsWith() or String#endsWith().
+    'unicorn/no-unnecessary-string-trim': 'error',
+    // Disallow non-literal replacement values in String#replace() and String#replaceAll().
+    'unicorn/no-unsafe-string-replacement': 'error',
+    // Prevent unsafe use of ArrayBuffer view .buffer.
+    'unicorn/no-unsafe-buffer-conversion': 'error',
 
     // Require braces for all control statements.
     curly: ['error', 'all'],
