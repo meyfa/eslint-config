@@ -4,7 +4,7 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('core', [
   {
-    name: 'curly-fail',
+    name: 'curly__fail',
     code: dedent`
       export function bracesFail (foo: boolean): number {
         if (foo) return 1
@@ -31,7 +31,7 @@ await runFixtureTests('core', [
     ]
   },
   {
-    name: 'curly-pass',
+    name: 'curly__pass',
     code: dedent`
       export function bracesPass (foo: boolean): number {
         if (foo) {
@@ -60,7 +60,7 @@ await runFixtureTests('core', [
     `
   },
   {
-    name: 'no-useless-rename-fail',
+    name: 'no-useless-rename__fail',
     code: dedent`
       const obj = { foo: 1 }
       const { foo: foo } = obj
@@ -71,7 +71,7 @@ await runFixtureTests('core', [
     ]
   },
   {
-    name: 'no-useless-rename-pass',
+    name: 'no-useless-rename__pass',
     code: dedent`
       const obj = { foo: 1 }
       const { foo } = obj
@@ -79,7 +79,7 @@ await runFixtureTests('core', [
     `
   },
   {
-    name: 'no-useless-rename-pass-renamed',
+    name: 'no-useless-rename__renamed__pass',
     code: dedent`
       const obj = { foo: 1 }
       const { foo: bar } = obj
@@ -87,7 +87,7 @@ await runFixtureTests('core', [
     `
   },
   {
-    name: 'object-shorthand-construction-fail',
+    name: 'object-shorthand__construction__fail',
     code: dedent`
       const foo = 1
       console.log({ foo: foo })
@@ -97,21 +97,21 @@ await runFixtureTests('core', [
     ]
   },
   {
-    name: 'object-shorthand-construction-pass',
+    name: 'object-shorthand__construction__pass',
     code: dedent`
       const foo = 1
       console.log({ foo })
     `
   },
   {
-    name: 'object-shorthand-construction-pass-renamed',
+    name: 'object-shorthand__construction__renamed__pass',
     code: dedent`
       const bar = 1
       console.log({ foo: bar })
     `
   },
   {
-    name: 'object-shorthand-methods-fail',
+    name: 'object-shorthand__methods__fail',
     code: dedent`
       const obj = {
         foo: function (): void {}
@@ -123,7 +123,7 @@ await runFixtureTests('core', [
     ]
   },
   {
-    name: 'object-shorthand-methods-pass',
+    name: 'object-shorthand__methods__pass',
     code: dedent`
       const obj = {
         foo (): void {}
@@ -137,7 +137,7 @@ await runFixtureTests('core', [
     `
   },
   {
-    name: 'radix-fail',
+    name: 'radix__fail',
     code: dedent`
       Number.parseInt('10')
     `,
@@ -146,13 +146,13 @@ await runFixtureTests('core', [
     ]
   },
   {
-    name: 'radix-pass',
+    name: 'radix__pass',
     code: dedent`
       Number.parseInt('10', 10)
     `
   },
   {
-    name: 'no-restricted-syntax-increment-for-fail',
+    name: 'no-restricted-syntax__increment-for__fail',
     code: dedent`
       for (let i = 0; i < 3; i++) {
         ;
@@ -183,7 +183,7 @@ await runFixtureTests('core', [
     ]
   },
   {
-    name: 'no-restricted-syntax-increment-for-pass',
+    name: 'no-restricted-syntax__increment-for__pass',
     code: dedent`
       for (let i = 0; i < 3; ++i) {
         ;
@@ -227,7 +227,7 @@ await runFixtureTests('core', [
     `
   },
   {
-    name: 'no-restricted-syntax-increment-standalone-fail',
+    name: 'no-restricted-syntax__increment-standalone__fail',
     code: dedent`
       let foo = 0
       let bar = 0
@@ -243,7 +243,7 @@ await runFixtureTests('core', [
     ]
   },
   {
-    name: 'no-restricted-syntax-increment-standalone-pass',
+    name: 'no-restricted-syntax__increment-standalone__pass',
     code: dedent`
       let foo = 0
       let bar = 0
