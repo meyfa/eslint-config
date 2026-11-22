@@ -308,7 +308,9 @@ await runFixtureTests('stylistic', [
     `,
     expectErrors: [
       '@stylistic/space-in-parens', // after (
-      '@stylistic/space-in-parens' // before )
+      '@stylistic/list-style',
+      '@stylistic/space-in-parens', // before )
+      '@stylistic/list-style'
     ]
   },
   {
@@ -426,7 +428,7 @@ await runFixtureTests('stylistic', [
     `
   },
   {
-    name: 'object-curly-newline__pass',
+    name: 'list-style__object-curly__pass',
     code: dedent`
       import { import1, import2 } from 'foo'
 
@@ -437,30 +439,74 @@ await runFixtureTests('stylistic', [
         b: import2
       }
 
+      const export0 = {}
       const export1 = { a }
       const export2 = {
         b
       }
+      const export3 = { a, b }
 
       export { export1 }
       export {
         export2
       }
+      export { export0, export3 }
+
+      export interface Interface {
+        a: string
+      }
+
+      export function getType (): {
+        b: string
+      } {
+        return { b: 'value' }
+      }
+
+      export enum Enum {
+        A
+      }
     `
   },
   {
-    name: 'object-curly-newline__object__fail',
+    name: 'list-style__array__fail',
+    code: dedent`
+      console.log([
+        1, 2])
+    `,
+    expectErrors: [
+      '@stylistic/list-style',
+      '@stylistic/list-style'
+    ]
+  },
+  {
+    name: 'list-style__array__pass',
+    code: dedent`
+      console.log([])
+      console.log([
+      ])
+      console.log([
+        1
+      ])
+      console.log([1, 2])
+      console.log([
+        1,
+        2
+      ])
+    `
+  },
+  {
+    name: 'list-style__object__fail',
     code: dedent`
       const foo = { a: 1
       }
       console.log(foo)
     `,
     expectErrors: [
-      '@stylistic/object-curly-newline'
+      '@stylistic/list-style'
     ]
   },
   {
-    name: 'object-curly-newline__pattern__fail',
+    name: 'list-style__pattern__fail',
     code: dedent`
       const { a,
         b } = { a: 1, b: 2 }
@@ -468,12 +514,11 @@ await runFixtureTests('stylistic', [
       console.log(a, b)
     `,
     expectErrors: [
-      '@stylistic/object-curly-newline',
-      '@stylistic/object-curly-newline'
+      '@stylistic/list-style'
     ]
   },
   {
-    name: 'object-curly-newline__import__fail',
+    name: 'list-style__import__fail',
     code: dedent`
       import { import1,
         import2 } from 'baz'
@@ -481,12 +526,11 @@ await runFixtureTests('stylistic', [
       console.log(import1, import2)
     `,
     expectErrors: [
-      '@stylistic/object-curly-newline',
-      '@stylistic/object-curly-newline'
+      '@stylistic/list-style'
     ]
   },
   {
-    name: 'object-curly-newline__export__fail',
+    name: 'list-style__export__fail',
     code: dedent`
       const export1 = 1
       const export2 = 2
@@ -495,8 +539,27 @@ await runFixtureTests('stylistic', [
         export2 }
     `,
     expectErrors: [
-      '@stylistic/object-curly-newline',
-      '@stylistic/object-curly-newline'
+      '@stylistic/list-style'
+    ]
+  },
+  {
+    name: 'list-style__typescript-curly-lists__fail',
+    code: dedent`
+      export interface Interface { a: string
+      }
+
+      export function getType (): { b: string
+      } {
+        return { b: 'value' }
+      }
+
+      export enum Enum { A
+      }
+    `,
+    expectErrors: [
+      '@stylistic/list-style',
+      '@stylistic/list-style',
+      '@stylistic/list-style'
     ]
   }
 ])
