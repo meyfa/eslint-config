@@ -4,7 +4,7 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('jsdoc', [
   {
-    name: 'require-jsdoc-class-fail',
+    name: 'require-jsdoc__class__fail',
     code: dedent`
       class Example {}
     `,
@@ -13,7 +13,7 @@ await runFixtureTests('jsdoc', [
     ]
   },
   {
-    name: 'require-jsdoc-class-pass',
+    name: 'require-jsdoc__class__pass',
     code: dedent`
       /**
        * Example class.
@@ -22,7 +22,7 @@ await runFixtureTests('jsdoc', [
     `
   },
   {
-    name: 'require-jsdoc-function-fail',
+    name: 'require-jsdoc__function__fail',
     code: dedent`
       function add (a: number, b: number): number {
         return a + b
@@ -33,7 +33,7 @@ await runFixtureTests('jsdoc', [
     ]
   },
   {
-    name: 'require-jsdoc-function-pass',
+    name: 'require-jsdoc__function__pass',
     code: dedent`
       /**
        * Adds two numbers together.
@@ -48,7 +48,7 @@ await runFixtureTests('jsdoc', [
     `
   },
   {
-    name: 'no-types-property-signature-fail',
+    name: 'no-types__property-signature__fail',
     code: dedent`
       /**
        * Example interface.
@@ -67,7 +67,7 @@ await runFixtureTests('jsdoc', [
     ]
   },
   {
-    name: 'no-types-property-signature-pass',
+    name: 'no-types__property-signature__pass',
     code: dedent`
       /**
        * Example interface.
@@ -82,7 +82,7 @@ await runFixtureTests('jsdoc', [
     `
   },
   {
-    name: 'require-param-returns-description-fail',
+    name: 'require-param-description__fail',
     code: dedent`
       /**
        * Example interface.
@@ -90,18 +90,35 @@ await runFixtureTests('jsdoc', [
       export interface Example {
         /**
          * @param value
+         * @returns The mapped number.
+         */
+        map: (value: number) => number
+      }
+    `,
+    expectErrors: [
+      'jsdoc/require-param-description'
+    ]
+  },
+  {
+    name: 'require-returns-description__fail',
+    code: dedent`
+      /**
+       * Example interface.
+       */
+      export interface Example {
+        /**
+         * @param value The input value.
          * @returns
          */
         map: (value: number) => number
       }
     `,
     expectErrors: [
-      'jsdoc/require-param-description',
       'jsdoc/require-returns-description'
     ]
   },
   {
-    name: 'tag-lines-warn',
+    name: 'tag-lines__warn',
     code: dedent`
       /**
        * Example interface.

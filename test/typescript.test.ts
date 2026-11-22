@@ -4,14 +4,14 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('typescript', [
   {
-    name: 'explicit-any-pass',
+    name: 'no-explicit-any__pass',
     code: dedent`
       const value: any = 123
       console.log(value)
     `
   },
   {
-    name: 'consistent-type-imports-fail',
+    name: 'consistent-type-imports__fail',
     code: dedent`
       import { TestContext } from 'node:test'
 
@@ -24,7 +24,7 @@ await runFixtureTests('typescript', [
     ]
   },
   {
-    name: 'consistent-type-imports-pass',
+    name: 'consistent-type-imports__pass',
     code: dedent`
       import type { TestContext } from 'node:test'
 
@@ -34,7 +34,7 @@ await runFixtureTests('typescript', [
     `
   },
   {
-    name: 'consistent-type-imports-split-pass',
+    name: 'consistent-type-imports__split__pass',
     code: dedent`
       import type { TestContext } from 'node:test'
       import { test } from 'node:test'
@@ -45,7 +45,7 @@ await runFixtureTests('typescript', [
     `
   },
   {
-    name: 'consistent-generic-constructors-fail',
+    name: 'consistent-generic-constructors__fail',
     code: dedent`
       const map: Map<string, number> = new Map()
       console.log(map)
@@ -55,14 +55,14 @@ await runFixtureTests('typescript', [
     ]
   },
   {
-    name: 'consistent-generic-constructors-pass',
+    name: 'consistent-generic-constructors__pass',
     code: dedent`
       const map = new Map<string, number>()
       console.log(map)
     `
   },
   {
-    name: 'floating-promises-node-test-pass',
+    name: 'floating-promises__node-test__pass',
     code: dedent`
       import { test } from 'node:test'
 
@@ -72,7 +72,7 @@ await runFixtureTests('typescript', [
     `
   },
   {
-    name: 'floating-promises-fail',
+    name: 'floating-promises__fail',
     code: dedent`
       Promise.resolve()
     `,
@@ -81,7 +81,7 @@ await runFixtureTests('typescript', [
     ]
   },
   {
-    name: 'method-signature-style-fail',
+    name: 'method-signature-style__fail',
     code: dedent`
       export interface Foo {
         bar(): void
@@ -92,7 +92,7 @@ await runFixtureTests('typescript', [
     ]
   },
   {
-    name: 'method-signature-style-pass',
+    name: 'method-signature-style__pass',
     code: dedent`
       export interface Foo {
         bar: () => void
@@ -100,7 +100,7 @@ await runFixtureTests('typescript', [
     `
   },
   {
-    name: 'no-meaningless-void-operator-fail',
+    name: 'no-meaningless-void-operator__fail',
     code: dedent`
       const value = 123
       void value
@@ -110,7 +110,7 @@ await runFixtureTests('typescript', [
     ]
   },
   {
-    name: 'no-meaningless-void-operator-call-pass',
+    name: 'no-meaningless-void-operator__call__pass',
     code: dedent`
       const promise = Promise.resolve(123)
       void promise

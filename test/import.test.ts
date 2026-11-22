@@ -4,7 +4,7 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('import', [
   {
-    name: 'consistent-type-specifier-style-fail',
+    name: 'consistent-type-specifier-style__fail',
     code: dedent`
       import { type TestContext, test } from 'node:test'
 
@@ -17,7 +17,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'consistent-type-specifier-style-pass',
+    name: 'consistent-type-specifier-style__pass',
     code: dedent`
       import type { TestContext } from 'node:test'
       import { test } from 'node:test'
@@ -28,7 +28,7 @@ await runFixtureTests('import', [
      `
   },
   {
-    name: 'first-fail',
+    name: 'first__fail',
     code: dedent`
       import path from 'node:path'
 
@@ -43,7 +43,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'newline-after-import-fail',
+    name: 'newline-after-import__fail',
     code: dedent`
       import path from 'node:path'
       console.log(path)
@@ -53,7 +53,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'newline-after-import-pass',
+    name: 'newline-after-import__pass',
     code: dedent`
       import path from 'node:path'
 
@@ -61,7 +61,7 @@ await runFixtureTests('import', [
     `
   },
   {
-    name: 'order-fail',
+    name: 'order__fail',
     code: dedent`
       import { ESLint } from 'eslint'
       import path from 'node:path'
@@ -73,7 +73,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'order-alphabetize-fail',
+    name: 'order__alphabetize__fail',
     code: dedent`
       import tseslint from 'typescript-eslint'
       import eslint from '@eslint/js'
@@ -85,7 +85,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'order-named-fail',
+    name: 'order__named__fail',
     code: dedent`
       import { Linter, ESLint } from 'eslint'
 
@@ -96,7 +96,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'order-newlines-fail',
+    name: 'order__newlines__fail',
     code: dedent`
       import eslint from '@eslint/js'
 
@@ -109,7 +109,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'order-side-effects-pass',
+    name: 'order__side-effects__pass',
     code: dedent`
       import 'foo'
       import eslint from '@eslint/js'
@@ -119,7 +119,7 @@ await runFixtureTests('import', [
     `
   },
   {
-    name: 'order-types-fail',
+    name: 'order__types__fail',
     code: dedent`
       // should be ordered by the source, not the type name
       import type { TypeA } from 'foo-b'
@@ -132,7 +132,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'order-types-pass',
+    name: 'order__types__pass',
     code: dedent`
       // should be ordered by the source, not the type name
       import type { TypeB } from 'foo-a'
@@ -142,7 +142,7 @@ await runFixtureTests('import', [
     `
   },
   {
-    name: 'order-types-inside-fail',
+    name: 'order__types-inside__fail',
     code: dedent`
       import type { TypeB, TypeA } from 'foo'
 
@@ -153,7 +153,7 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'order-types-inside-pass',
+    name: 'order__types-inside__pass',
     code: dedent`
       import type { TypeA, TypeB } from 'foo'
 

@@ -2,9 +2,9 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 // Test cases for "@stylistic/eslint-plugin" rules
 
-await runFixtureTests('style', [
+await runFixtureTests('stylistic', [
   {
-    name: 'arrow-parens-fail',
+    name: 'arrow-parens__fail',
     code: dedent`
       const helper = (fn: (arg: string) => void) => fn('test')
       helper(arg => {}) // arg should be parenthesized
@@ -14,14 +14,14 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'arrow-parens-pass',
+    name: 'arrow-parens__pass',
     code: dedent`
       const helper = (fn: (arg: string) => void) => fn('test')
       helper((arg) => {})
     `
   },
   {
-    name: 'brace-style-fail',
+    name: 'brace-style__fail',
     code: dedent`
       const value = Math.random()
       if (value > 0.5) {
@@ -36,7 +36,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'brace-style-pass',
+    name: 'brace-style__pass',
     code: dedent`
       const value = Math.random()
       if (value > 0.5) {
@@ -47,7 +47,7 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'comma-dangle-fail',
+    name: 'comma-dangle__fail',
     code: dedent`
       console.log([
         1,
@@ -65,7 +65,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'comma-dangle-pass',
+    name: 'comma-dangle__pass',
     code: dedent`
       console.log([
         1,
@@ -79,7 +79,27 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'jsx-closing-bracket-location-fail',
+    name: 'indent__fail',
+    code: dedent`
+      export function foo (): void {
+          return 0
+      }
+      foo()
+    `,
+    expectErrors: [
+      '@stylistic/indent'
+    ]
+  },
+  {
+    name: 'indent__pass',
+    code: dedent`
+      export function foo (): void {
+        return 0
+      }
+    `
+  },
+  {
+    name: 'jsx-closing-bracket-location__fail',
     fileExtension: 'tsx',
     code: dedent`
       <Component
@@ -93,7 +113,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-closing-tag-location-fail',
+    name: 'jsx-closing-tag-location__fail',
     fileExtension: 'tsx',
     code: dedent`
       <Component>
@@ -105,7 +125,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-curly-brace-presence-fail',
+    name: 'jsx-curly-brace-presence__fail',
     fileExtension: 'tsx',
     code: dedent`
       <Component foo={'bar'} />
@@ -115,7 +135,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-curly-spacing-fail',
+    name: 'jsx-curly-spacing__fail',
     fileExtension: 'tsx',
     code: dedent`
       <div foo={ 1} />
@@ -125,7 +145,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-equals-spacing-fail',
+    name: 'jsx-equals-spacing__fail',
     fileExtension: 'tsx',
     code: dedent`
       <div foo ='bar' />
@@ -135,7 +155,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-first-prop-new-line-fail',
+    name: 'jsx-first-prop-new-line__fail',
     fileExtension: 'tsx',
     code: dedent`
       <Component a='1'
@@ -147,7 +167,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-max-props-per-line-fail',
+    name: 'jsx-max-props-per-line__fail',
     fileExtension: 'tsx',
     code: dedent`
       <Component
@@ -159,7 +179,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-quotes-fail',
+    name: 'jsx-quotes__fail',
     fileExtension: 'tsx',
     code: dedent`
       <div foo="bar" />
@@ -169,7 +189,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-self-closing-comp-fail',
+    name: 'jsx-self-closing-comp__fail',
     fileExtension: 'tsx',
     code: dedent`
       <Component></Component>
@@ -179,7 +199,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-tag-spacing-fail',
+    name: 'jsx-tag-spacing__fail',
     fileExtension: 'tsx',
     code: dedent`
       <div/>
@@ -189,7 +209,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-wrap-multilines-prop-fail',
+    name: 'jsx-wrap-multilines__prop__fail',
     fileExtension: 'tsx',
     code: dedent`
       <MyComponent
@@ -203,7 +223,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'jsx-wrap-multilines-prop-pass',
+    name: 'jsx-wrap-multilines__prop__pass',
     fileExtension: 'tsx',
     code: dedent`
       <MyComponent
@@ -215,7 +235,7 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'max-statements-per-line-fail',
+    name: 'max-statements-per-line__fail',
     code: dedent`
       export function foo (): void {
         const first = 'foo'; const second = 'bar'
@@ -227,7 +247,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'multi-spaces-fail',
+    name: 'no-multi-spaces__fail',
     code: dedent`
       void 0  // too many spaces before the comment
     `,
@@ -236,7 +256,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'operator-linebreak-fail',
+    name: 'operator-linebreak__fail',
     code: dedent`
       const foo = 'hello'
         + 'world'
@@ -254,7 +274,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'operator-linebreak-pass',
+    name: 'operator-linebreak__pass',
     code: dedent`
       const foo = 'hello' +
         'world'
@@ -267,7 +287,7 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'quote-props-fail',
+    name: 'quote-props__fail',
     code: dedent`
       console.log({ 'a': 1 })
     `,
@@ -276,37 +296,48 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'quote-props-pass',
+    name: 'quote-props__pass',
     code: dedent`
       console.log({ 'a-b': 1 })
     `
   },
   {
-    name: 'space-fail',
+    name: 'space-in-parens__fail',
     code: dedent`
-      foo( 'test' )
-      function foo(arg: string): string {
-          return arg
-      }
+      console.log( 'test' )
     `,
     expectErrors: [
       '@stylistic/space-in-parens', // after (
-      '@stylistic/space-in-parens', // before )
-      '@stylistic/space-before-function-paren',
-      '@stylistic/indent'
+      '@stylistic/space-in-parens' // before )
     ]
   },
   {
-    name: 'space-pass',
+    name: 'space-in-parens__pass',
     code: dedent`
-      foo('test')
-      function foo (arg: string): string {
+      console.log('test')
+    `
+  },
+  {
+    name: 'space-before-function-paren__fail',
+    code: dedent`
+      export function foo(arg: string): string {
+        return arg
+      }
+    `,
+    expectErrors: [
+      '@stylistic/space-before-function-paren'
+    ]
+  },
+  {
+    name: 'pace-before-function-paren__pass',
+    code: dedent`
+      export function foo (arg: string): string {
         return arg
       }
     `
   },
   {
-    name: 'curly-newline-try-catch-pass',
+    name: 'curly-newline__try-catch__pass',
     code: dedent`
       try {
         void 0
@@ -314,7 +345,7 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'curly-newline-arrow-pass',
+    name: 'curly-newline__arrow__pass',
     code: dedent`
       const fn = () => {
         return Math.random()
@@ -323,20 +354,20 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'curly-newline-arrow-empty-pass',
+    name: 'curly-newline__arrow-empty__pass',
     code: dedent`
       const fn = () => {}
       console.log(fn)
     `
   },
   {
-    name: 'curly-newline-block-comment-pass',
+    name: 'curly-newline__block-comment__pass',
     code: dedent`
       if (Math.random() > 0.5) { /* skip */ }
     `
   },
   {
-    name: 'curly-newline-block-statement-pass',
+    name: 'curly-newline__block-statement__pass',
     code: dedent`
       if (Math.random() > 0.5) {
         void 0
@@ -344,7 +375,7 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'curly-newline-switch-start-before-fail',
+    name: 'curly-newline__switch-start-before__fail',
     code: dedent`
       switch (Math.random()) {
         case 0:
@@ -358,7 +389,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'curly-newline-switch-start-after-fail',
+    name: 'curly-newline__switch-start-after__fail',
     code: dedent`
       switch (Math.random()) {
         case 0: { void 0
@@ -371,7 +402,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'curly-newline-switch-end-fail',
+    name: 'curly-newline__switch-end__fail',
     code: dedent`
       switch (Math.random()) {
         case 0: {
@@ -384,7 +415,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'curly-newline-switch-pass',
+    name: 'curly-newline__switch__pass',
     code: dedent`
       switch (Math.random()) {
         case 0: {
@@ -395,7 +426,7 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'object-curly-newline-pass',
+    name: 'object-curly-newline__pass',
     code: dedent`
       import { import1, import2 } from 'foo'
 
@@ -418,7 +449,7 @@ await runFixtureTests('style', [
     `
   },
   {
-    name: 'object-curly-newline-object-fail',
+    name: 'object-curly-newline__object__fail',
     code: dedent`
       const foo = { a: 1
       }
@@ -429,7 +460,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'object-curly-newline-pattern-fail',
+    name: 'object-curly-newline__pattern__fail',
     code: dedent`
       const { a,
         b } = { a: 1, b: 2 }
@@ -442,7 +473,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'object-curly-newline-import-fail',
+    name: 'object-curly-newline__import__fail',
     code: dedent`
       import { import1,
         import2 } from 'baz'
@@ -455,7 +486,7 @@ await runFixtureTests('style', [
     ]
   },
   {
-    name: 'object-curly-newline-export-fail',
+    name: 'object-curly-newline__export__fail',
     code: dedent`
       const export1 = 1
       const export2 = 2

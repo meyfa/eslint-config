@@ -4,7 +4,7 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('unicorn', [
   {
-    name: 'prefer-node-protocol-fail',
+    name: 'prefer-node-protocol__fail',
     code: dedent`
       import 'fs'
     `,
@@ -13,13 +13,13 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-node-protocol-pass',
+    name: 'prefer-node-protocol__pass',
     code: dedent`
       import 'node:fs'
     `
   },
   {
-    name: 'isolated-functions-fail',
+    name: 'isolated-functions__fail',
     code: dedent`
       const outerValue = 123
 
@@ -33,7 +33,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-invalid-argument-count-fail',
+    name: 'no-invalid-argument-count__fail',
     code: dedent`
       function identity (value: number): number {
         return value
@@ -46,7 +46,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-block-statement-over-iife-fail',
+    name: 'prefer-block-statement-over-iife__fail',
     code: dedent`
       (() => {
         const value = 1
@@ -58,7 +58,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'consistent-tuple-labels-fail',
+    name: 'consistent-tuple-labels__fail',
     code: dedent`
       export type Point = [x: number, number]
     `,
@@ -67,7 +67,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'custom-error-definition-fail',
+    name: 'custom-error-definition__fail',
     code: dedent`
       export class MyError extends Error {}
     `,
@@ -76,7 +76,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'throw-new-error-fail',
+    name: 'throw-new-error__fail',
     code: dedent`
       fail()
       function fail (): never {
@@ -88,7 +88,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-multiple-promise-resolver-calls-fail',
+    name: 'no-multiple-promise-resolver-calls__fail',
     code: dedent`
       void new Promise<void>((resolve, reject) => {
         if (Math.random() > 0.5) {
@@ -102,7 +102,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-unsafe-promise-all-settled-values-fail',
+    name: 'no-unsafe-promise-all-settled-values__fail',
     code: dedent`
       export async function collectValues (): Promise<number[]> {
         return (await Promise.allSettled([Promise.resolve(1)])).map((result) => result.value)
@@ -113,7 +113,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-queue-microtask-fail',
+    name: 'prefer-queue-microtask__fail',
     code: dedent`
       process.nextTick(() => {})
     `,
@@ -122,7 +122,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'switch-case-break-position-fail',
+    name: 'switch-case-break-position__fail',
     code: dedent`
       switch (Math.random()) {
         case 0: {
@@ -136,7 +136,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-typeof-undefined-fail',
+    name: 'no-typeof-undefined__fail',
     code: dedent`
       export function checkUndefined (value: string | undefined): void {
         if (typeof value === 'undefined') {
@@ -149,7 +149,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-instanceof-builtins-fail',
+    name: 'no-instanceof-builtins__fail',
     code: dedent`
       const value: any = [1, 2, 3]
       if (value instanceof Array) {
@@ -169,7 +169,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-number-properties-fail',
+    name: 'prefer-number-properties__fail',
     code: dedent`
       void isNaN(123)
     `,
@@ -178,7 +178,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-number-is-safe-integer-fail',
+    name: 'prefer-number-is-safe-integer__fail',
     code: dedent`
       if (!Number.isInteger(9007199254740992)) {
         throw new Error('Expected an integer')
@@ -189,7 +189,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-unsafe-property-key-fail',
+    name: 'no-unsafe-property-key__fail',
     code: dedent`
       const key = {}
       const value = { [key]: true }
@@ -200,7 +200,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-unsafe-property-key-pass',
+    name: 'no-unsafe-property-key__pass',
     code: dedent`
       const keyA = Symbol('keyA')
       const keyB = 'keyB'
@@ -209,7 +209,7 @@ await runFixtureTests('unicorn', [
     `
   },
   {
-    name: 'prefer-flat-math-min-max-fail',
+    name: 'prefer-flat-math-min-max__fail',
     code: dedent`
       const largest = Math.max(Math.max(1, 2), 3)
       console.log(largest)
@@ -219,7 +219,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-flat-math-min-max-pass',
+    name: 'prefer-flat-math-min-max__pass',
     code: dedent`
       const largest = Math.max(1, 2, 3)
       const clamped = Math.max(0, Math.min(largest, 100))
@@ -227,7 +227,7 @@ await runFixtureTests('unicorn', [
     `
   },
   {
-    name: 'prefer-date-now-fail',
+    name: 'prefer-date-now__fail',
     code: dedent`
       void new Date().getTime()
     `,
@@ -236,7 +236,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-useless-collection-argument-fail',
+    name: 'no-useless-collection-argument__fail',
     code: dedent`
       new Set([])
     `,
@@ -245,7 +245,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-mismatched-map-key-fail',
+    name: 'no-mismatched-map-key__fail',
     code: dedent`
       const values = new Map<string, number>()
       if (values.has('expected')) {
@@ -257,7 +257,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-set-methods-fail',
+    name: 'prefer-set-methods__fail',
     code: dedent`
       const values = new Set([1, 2])
       const otherValues = new Set([2, 3])
@@ -269,7 +269,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-useless-set-construction-fail',
+    name: 'no-useless-set-construction__fail',
     code: dedent`
       const values = new Set([1, 2])
       const otherValues = new Set([2, 3])
@@ -281,7 +281,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-unused-builtin-method-return-fail',
+    name: 'no-unused-builtin-method-return__fail',
     code: dedent`
       const values = [1, 2, 3]
       values.map((value) => value * 2)
@@ -291,7 +291,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-useless-fallback-in-spread-fail',
+    name: 'no-useless-fallback-in-spread__fail',
     code: dedent`
       const maybeObject: Record<string, number> | undefined
       console.log({ ...(maybeObject ?? {}) })
@@ -301,7 +301,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-array-from-fill-fail',
+    name: 'no-array-from-fill__fail',
     code: dedent`
       const values = Array.from({ length: 3 }).fill(1)
       console.log(values)
@@ -311,7 +311,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-array-from-map-fail',
+    name: 'prefer-array-from-map__fail',
     code: dedent`
       const values = Array.from([1, 2, 3]).map((value) => value * 2)
       console.log(values)
@@ -321,7 +321,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-array-concat-in-loop-fail',
+    name: 'no-array-concat-in-loop__fail',
     code: dedent`
       let values: number[] = []
       for (const value of [1, 2, 3]) {
@@ -334,7 +334,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-loop-iterable-mutation-fail',
+    name: 'no-loop-iterable-mutation__fail',
     code: dedent`
       const values = [1]
       for (const value of values) {
@@ -346,7 +346,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-array-iterable-methods-fail',
+    name: 'prefer-array-iterable-methods__fail',
     code: dedent`
       const values = [1, 2, 3]
       for (const [, value] of values.entries()) {
@@ -358,7 +358,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-direct-iteration-fail',
+    name: 'prefer-direct-iteration__fail',
     code: dedent`
       const values = [...[1, 2, 3].values()]
       console.log(values)
@@ -368,7 +368,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-iterator-helpers-fail',
+    name: 'prefer-iterator-helpers__fail',
     code: dedent`
       const values = new Map([[1, 1]])
       const match = [...values.values()].find((value) => value === 1)
@@ -379,7 +379,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-useless-iterator-to-array-fail',
+    name: 'no-useless-iterator-to-array__fail',
     code: dedent`
       const iterator = [1, 2, 3][Symbol.iterator]()
       console.log(new Set(iterator.toArray()))
@@ -389,7 +389,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'require-array-join-separator-fail',
+    name: 'require-array-join-separator__fail',
     code: dedent`
       void ['a', 'b'].join()
     `,
@@ -398,7 +398,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-at-fail',
+    name: 'prefer-at__fail',
     code: dedent`
       const values = [1, 2, 3]
       console.log(values[values.length - 1])
@@ -408,7 +408,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-split-limit-fail',
+    name: 'prefer-split-limit__fail',
     code: dedent`
       const protocol = 'https://example.com'.split(':')[0]
       console.log(protocol)
@@ -418,7 +418,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'prefer-string-slice-fail',
+    name: 'prefer-string-slice__fail',
     code: dedent`
       void 'hello'.substring(1)
     `,
@@ -427,7 +427,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-unnecessary-string-trim-fail',
+    name: 'no-unnecessary-string-trim__fail',
     code: dedent`
       const startsWithDash = ' -value '.trim().startsWith('-')
       console.log(startsWithDash)
@@ -437,7 +437,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-unsafe-string-replacement-fail',
+    name: 'no-unsafe-string-replacement__fail',
     code: dedent`
       const replacement = '$&'
       const result = 'value'.replace('value', replacement)
@@ -448,7 +448,7 @@ await runFixtureTests('unicorn', [
     ]
   },
   {
-    name: 'no-unsafe-buffer-conversion-fail',
+    name: 'no-unsafe-buffer-conversion__fail',
     code: dedent`
       const bytes = new Uint8Array([1, 2, 3])
       const copy = Buffer.from(bytes.buffer)
