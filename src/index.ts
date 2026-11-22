@@ -132,15 +132,22 @@ export default defineConfig({
 
     ...customizedStylistic.rules,
 
+    '@stylistic/list-style': ['error', {
+      overrides: {
+        '{}': {
+          multiLine: {
+            minItems: 0
+          }
+        }
+      }
+    }],
+
+    '@stylistic/object-curly-newline': 'off',
     '@stylistic/space-before-function-paren': ['error', 'always'],
     '@stylistic/operator-linebreak': ['error', 'after', { overrides: { '?': 'before', ':': 'before', '|>': 'before' } }],
     '@stylistic/curly-newline': ['error', {
       multiline: true,
       minElements: 1,
-      consistent: true
-    }],
-    '@stylistic/object-curly-newline': ['error', {
-      multiline: true,
       consistent: true
     }],
 
