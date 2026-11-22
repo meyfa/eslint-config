@@ -1,5 +1,7 @@
 import { dedent, runFixtureTests } from './fixtures/index.ts'
 
+// Test cases for "@typescript-eslint" rules
+
 await runFixtureTests('typescript', [
   {
     name: 'explicit-any-pass',

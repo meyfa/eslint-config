@@ -1,5 +1,7 @@
 import { dedent, runFixtureTests } from './fixtures/index.ts'
 
+// Test cases for "eslint-plugin-import-x" rules
+
 await runFixtureTests('import', [
   {
     name: 'consistent-type-specifier-style-fail',

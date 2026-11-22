@@ -38,6 +38,98 @@ export default defineConfig({
   },
 
   rules: {
+    /* ---- core ---- */
+
+    camelcase: ['error', {
+      allow: ['^UNSAFE_'],
+      properties: 'never',
+      ignoreGlobals: true
+    }],
+
+    // Require braces for all control statements.
+    curly: ['error', 'all'],
+
+    'no-empty': ['error', { allowEmptyCatch: true }],
+
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'ForStatement[update.type=\'UpdateExpression\'] > UpdateExpression[operator=\'++\'][prefix=false]',
+        message: 'Use prefix increment in for-loop update clause: ++i (not i++).'
+      },
+      {
+        selector: 'ForStatement[update.type=\'UpdateExpression\'] > UpdateExpression[operator=\'--\'][prefix=false]',
+        message: 'Use prefix decrement in for-loop update clause: --i (not i--).'
+      },
+      {
+        selector: 'ForStatement[update.type=\'SequenceExpression\'] > SequenceExpression > UpdateExpression[operator=\'++\'][prefix=false]',
+        message: 'Use prefix increment in for-loop update clause: ++i (not i++).'
+      },
+      {
+        selector: 'ForStatement[update.type=\'SequenceExpression\'] > SequenceExpression > UpdateExpression[operator=\'--\'][prefix=false]',
+        message: 'Use prefix decrement in for-loop update clause: --i (not i--).'
+      },
+      {
+        selector: 'ExpressionStatement > UpdateExpression[operator=\'++\'][prefix=false]',
+        message: 'Use prefix increment: ++i (not i++).'
+      },
+      {
+        selector: 'ExpressionStatement > UpdateExpression[operator=\'--\'][prefix=false]',
+        message: 'Use prefix decrement: --i (not i--).'
+      }
+    ],
+
+    // Prevent useless renames like `const { foo: foo } = obj`.
+    'no-useless-rename': 'error',
+
+    // Prefer `{ foo }` over `{ foo: foo }` (including destructuring).
+    'object-shorthand': ['error', 'always'],
+
+    // Enforce the consistent use of the radix argument when using parseInt().
+    radix: 'error',
+
+    /* --- import ---- */
+
+    'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+    'import-x/export': 'error',
+    'import-x/first': 'error',
+    'import-x/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
+    'import-x/no-duplicates': 'error',
+    'import-x/no-named-default': 'error',
+    'import-x/order': ['error', {
+      alphabetize: {
+        order: 'asc',
+        caseInsensitive: false
+      },
+      named: {
+        enabled: true,
+        export: false
+      },
+      'newlines-between': 'never'
+    }],
+    'import-x/newline-after-import': ['error', { count: 1 }],
+    'import-x/no-webpack-loader-syntax': 'error',
+
+    // ES modules require a file extension on every import.
+    // NPM packages should be exempted. For example, we want to allow extensionless imports from 'preact/hooks'.
+    'import-x/extensions': ['error', 'always', { ignorePackages: true }],
+
+    /* ---- node ---- */
+
+    'n/handle-callback-err': ['error', '^(err|error)$'],
+    'n/no-callback-literal': 'error',
+    'n/no-deprecated-api': 'error',
+    'n/no-exports-assign': 'error',
+    'n/no-new-require': 'error',
+    'n/no-path-concat': 'error',
+    'n/process-exit-as-throw': 'error',
+
+    /* ---- promise ---- */
+
+    'promise/param-names': 'error',
+
+    /* --- stylistic --- */
+
     ...customizedStylistic.rules,
 
     '@stylistic/space-before-function-paren': ['error', 'always'],
@@ -85,7 +177,7 @@ export default defineConfig({
       propertyValue: 'parens-new-line'
     }],
 
-    'no-empty': ['error', { allowEmptyCatch: true }],
+    /* ---- typescript ---- */
 
     '@typescript-eslint/no-confusing-void-expression': [
       'error',
@@ -147,45 +239,7 @@ export default defineConfig({
     '@typescript-eslint/restrict-plus-operands': ['error', { skipCompoundAssignments: false }],
     '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
 
-    camelcase: ['error', {
-      allow: ['^UNSAFE_'],
-      properties: 'never',
-      ignoreGlobals: true
-    }],
-
-    'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
-    'import-x/export': 'error',
-    'import-x/first': 'error',
-    'import-x/no-absolute-path': ['error', { esmodule: true, commonjs: true, amd: false }],
-    'import-x/no-duplicates': 'error',
-    'import-x/no-named-default': 'error',
-    'import-x/order': ['error', {
-      alphabetize: {
-        order: 'asc',
-        caseInsensitive: false
-      },
-      named: {
-        enabled: true,
-        export: false
-      },
-      'newlines-between': 'never'
-    }],
-    'import-x/newline-after-import': ['error', { count: 1 }],
-    'import-x/no-webpack-loader-syntax': 'error',
-
-    // ES modules require a file extension on every import.
-    // NPM packages should be exempted. For example, we want to allow extensionless imports from 'preact/hooks'.
-    'import-x/extensions': ['error', 'always', { ignorePackages: true }],
-
-    'n/handle-callback-err': ['error', '^(err|error)$'],
-    'n/no-callback-literal': 'error',
-    'n/no-deprecated-api': 'error',
-    'n/no-exports-assign': 'error',
-    'n/no-new-require': 'error',
-    'n/no-path-concat': 'error',
-    'n/process-exit-as-throw': 'error',
-
-    'promise/param-names': 'error',
+    /* ---- unicorn ---- */
 
     // Prefer 'node:' protocol imports for Node.js built-in modules.
     'unicorn/prefer-node-protocol': 'error',
@@ -267,46 +321,6 @@ export default defineConfig({
     // Disallow non-literal replacement values in String#replace() and String#replaceAll().
     'unicorn/no-unsafe-string-replacement': 'error',
     // Prevent unsafe use of ArrayBuffer view .buffer.
-    'unicorn/no-unsafe-buffer-conversion': 'error',
-
-    // Require braces for all control statements.
-    curly: ['error', 'all'],
-
-    // Prefer `{ foo }` over `{ foo: foo }` (including destructuring).
-    'object-shorthand': ['error', 'always'],
-
-    // Prevent useless renames like `const { foo: foo } = obj`.
-    'no-useless-rename': 'error',
-
-    // Enforce the consistent use of the radix argument when using parseInt().
-    radix: 'error',
-
-    'no-restricted-syntax': [
-      'error',
-      {
-        selector: 'ForStatement[update.type=\'UpdateExpression\'] > UpdateExpression[operator=\'++\'][prefix=false]',
-        message: 'Use prefix increment in for-loop update clause: ++i (not i++).'
-      },
-      {
-        selector: 'ForStatement[update.type=\'UpdateExpression\'] > UpdateExpression[operator=\'--\'][prefix=false]',
-        message: 'Use prefix decrement in for-loop update clause: --i (not i--).'
-      },
-      {
-        selector: 'ForStatement[update.type=\'SequenceExpression\'] > SequenceExpression > UpdateExpression[operator=\'++\'][prefix=false]',
-        message: 'Use prefix increment in for-loop update clause: ++i (not i++).'
-      },
-      {
-        selector: 'ForStatement[update.type=\'SequenceExpression\'] > SequenceExpression > UpdateExpression[operator=\'--\'][prefix=false]',
-        message: 'Use prefix decrement in for-loop update clause: --i (not i--).'
-      },
-      {
-        selector: 'ExpressionStatement > UpdateExpression[operator=\'++\'][prefix=false]',
-        message: 'Use prefix increment: ++i (not i++).'
-      },
-      {
-        selector: 'ExpressionStatement > UpdateExpression[operator=\'--\'][prefix=false]',
-        message: 'Use prefix decrement: --i (not i--).'
-      }
-    ]
+    'unicorn/no-unsafe-buffer-conversion': 'error'
   }
 })
