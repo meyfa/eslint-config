@@ -4,6 +4,23 @@ import { dedent, runFixtureTests } from './fixtures/index.ts'
 
 await runFixtureTests('core', [
   {
+    name: 'camelcase__fail',
+    code: dedent`
+      const snake_case = 1
+      console.log(snake_case)
+    `,
+    expectErrors: [
+      'camelcase'
+    ]
+  },
+  {
+    name: 'camelcase__pass',
+    code: dedent`
+      const snakeCase = 1
+      console.log(snakeCase)
+    `
+  },
+  {
     name: 'curly__fail',
     code: dedent`
       export function bracesFail (foo: boolean): number {
@@ -60,96 +77,21 @@ await runFixtureTests('core', [
     `
   },
   {
-    name: 'no-useless-rename__fail',
+    name: 'no-empty__catch__pass',
     code: dedent`
-      const obj = { foo: 1 }
-      const { foo: foo } = obj
-      console.log(foo)
+      try {
+        throw new Error('test')
+      } catch {}
+    `
+  },
+  {
+    name: 'no-empty__block__fail',
+    code: dedent`
+      if (Math.random() > 0.5) {}
     `,
     expectErrors: [
-      'no-useless-rename'
+      'no-empty'
     ]
-  },
-  {
-    name: 'no-useless-rename__pass',
-    code: dedent`
-      const obj = { foo: 1 }
-      const { foo } = obj
-      console.log(foo)
-    `
-  },
-  {
-    name: 'no-useless-rename__renamed__pass',
-    code: dedent`
-      const obj = { foo: 1 }
-      const { foo: bar } = obj
-      console.log(bar)
-    `
-  },
-  {
-    name: 'object-shorthand__construction__fail',
-    code: dedent`
-      const foo = 1
-      console.log({ foo: foo })
-    `,
-    expectErrors: [
-      'object-shorthand'
-    ]
-  },
-  {
-    name: 'object-shorthand__construction__pass',
-    code: dedent`
-      const foo = 1
-      console.log({ foo })
-    `
-  },
-  {
-    name: 'object-shorthand__construction__renamed__pass',
-    code: dedent`
-      const bar = 1
-      console.log({ foo: bar })
-    `
-  },
-  {
-    name: 'object-shorthand__methods__fail',
-    code: dedent`
-      const obj = {
-        foo: function (): void {}
-      }
-      console.log(obj)
-    `,
-    expectErrors: [
-      'object-shorthand'
-    ]
-  },
-  {
-    name: 'object-shorthand__methods__pass',
-    code: dedent`
-      const obj = {
-        foo (): void {}
-      }
-      console.log(obj)
-
-      const arrowObj = {
-        foo: (): void => {}
-      }
-      console.log(arrowObj)
-    `
-  },
-  {
-    name: 'radix__fail',
-    code: dedent`
-      Number.parseInt('10')
-    `,
-    expectErrors: [
-      'radix'
-    ]
-  },
-  {
-    name: 'radix__pass',
-    code: dedent`
-      Number.parseInt('10', 10)
-    `
   },
   {
     name: 'no-restricted-syntax__increment-for__fail',
@@ -252,6 +194,136 @@ await runFixtureTests('core', [
       --bar
 
       export { foo, bar }
+    `
+  },
+  {
+    name: 'no-useless-rename__fail',
+    code: dedent`
+      const obj = { foo: 1 }
+      const { foo: foo } = obj
+      console.log(foo)
+    `,
+    expectErrors: [
+      'no-useless-rename'
+    ]
+  },
+  {
+    name: 'no-useless-rename__pass',
+    code: dedent`
+      const obj = { foo: 1 }
+      const { foo } = obj
+      console.log(foo)
+    `
+  },
+  {
+    name: 'no-useless-rename__renamed__pass',
+    code: dedent`
+      const obj = { foo: 1 }
+      const { foo: bar } = obj
+      console.log(bar)
+    `
+  },
+  {
+    name: 'object-shorthand__construction__fail',
+    code: dedent`
+      const foo = 1
+      console.log({ foo: foo })
+    `,
+    expectErrors: [
+      'object-shorthand'
+    ]
+  },
+  {
+    name: 'object-shorthand__construction__pass',
+    code: dedent`
+      const foo = 1
+      console.log({ foo })
+    `
+  },
+  {
+    name: 'object-shorthand__construction__renamed__pass',
+    code: dedent`
+      const bar = 1
+      console.log({ foo: bar })
+    `
+  },
+  {
+    name: 'object-shorthand__methods__fail',
+    code: dedent`
+      const obj = {
+        foo: function (): void {}
+      }
+      console.log(obj)
+    `,
+    expectErrors: [
+      'object-shorthand'
+    ]
+  },
+  {
+    name: 'object-shorthand__methods__pass',
+    code: dedent`
+      const obj = {
+        foo (): void {}
+      }
+      console.log(obj)
+
+      const arrowObj = {
+        foo: (): void => {}
+      }
+      console.log(arrowObj)
+    `
+  },
+  {
+    name: 'radix__fail',
+    code: dedent`
+      Number.parseInt('10')
+    `,
+    expectErrors: [
+      'radix'
+    ]
+  },
+  {
+    name: 'radix__pass',
+    code: dedent`
+      Number.parseInt('10', 10)
+    `
+  },
+  {
+    name: 'no-fallthrough__fail',
+    code: dedent`
+      switch (Math.random()) {
+        case 0:
+          console.log('zero')
+        case 1:
+          console.log('one')
+      }
+    `,
+    expectErrors: [
+      'no-fallthrough'
+    ]
+  },
+  {
+    name: 'no-fallthrough__break__pass',
+    code: dedent`
+      switch (Math.random()) {
+        case 0:
+          console.log('zero')
+          break
+        case 1:
+          console.log('one')
+          break
+      }
+    `
+  },
+  {
+    name: 'no-fallthrough__empty__pass',
+    code: dedent`
+      switch (Math.random()) {
+        case 0:
+        case 1:
+          console.log('one')
+          break
+      }
     `
   }
 ])
