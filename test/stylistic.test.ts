@@ -329,7 +329,7 @@ await runFixtureTests('stylistic', [
     ]
   },
   {
-    name: 'pace-before-function-paren__pass',
+    name: 'space-before-function-paren__pass',
     code: dedent`
       export function foo (arg: string): string {
         return arg

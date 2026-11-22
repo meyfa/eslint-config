@@ -28,6 +28,23 @@ await runFixtureTests('import', [
      `
   },
   {
+    name: 'export__fail',
+    code: dedent`
+      export default 1
+      export default 2
+    `,
+    expectErrors: [
+      'import-x/export',
+      'import-x/export'
+    ]
+  },
+  {
+    name: 'export__pass',
+    code: dedent`
+      export const value = 1
+    `
+  },
+  {
     name: 'first__fail',
     code: dedent`
       import path from 'node:path'
@@ -43,22 +60,40 @@ await runFixtureTests('import', [
     ]
   },
   {
-    name: 'newline-after-import__fail',
+    name: 'no-absolute-path__fail',
     code: dedent`
-      import path from 'node:path'
-      console.log(path)
+      import value from '/absolute/path'
+
+      console.log(value)
     `,
     expectErrors: [
-      'import-x/newline-after-import'
+      'import-x/no-absolute-path',
+      'import-x/extensions'
     ]
   },
   {
-    name: 'newline-after-import__pass',
+    name: 'no-duplicates__fail',
     code: dedent`
       import path from 'node:path'
+      import { join } from 'node:path'
 
-      console.log(path)
-    `
+      console.log(path, join)
+    `,
+    expectErrors: [
+      'import-x/no-duplicates',
+      'import-x/no-duplicates'
+    ]
+  },
+  {
+    name: 'no-named-default__fail',
+    code: dedent`
+      import foo, { default as bar } from 'foo'
+
+      console.log(foo, bar)
+    `,
+    expectErrors: [
+      'import-x/no-named-default'
+    ]
   },
   {
     name: 'order__fail',
@@ -158,6 +193,54 @@ await runFixtureTests('import', [
       import type { TypeA, TypeB } from 'foo'
 
       export const helper = (a: TypeA, b: TypeB): void => {}
+    `
+  },
+  {
+    name: 'newline-after-import__fail',
+    code: dedent`
+      import path from 'node:path'
+      console.log(path)
+    `,
+    expectErrors: [
+      'import-x/newline-after-import'
+    ]
+  },
+  {
+    name: 'newline-after-import__pass',
+    code: dedent`
+      import path from 'node:path'
+
+      console.log(path)
+    `
+  },
+  {
+    name: 'no-webpack-loader-syntax__fail',
+    code: dedent`
+      import styles from 'style-loader!css-loader!./styles.css'
+
+      console.log(styles)
+    `,
+    expectErrors: [
+      'import-x/no-webpack-loader-syntax'
+    ]
+  },
+  {
+    name: 'extensions__fail',
+    code: dedent`
+      import value from './value'
+
+      console.log(value)
+    `,
+    expectErrors: [
+      'import-x/extensions'
+    ]
+  },
+  {
+    name: 'extensions__pass',
+    code: dedent`
+      import value from './fixtures/index.ts'
+
+      console.log(value)
     `
   }
 ])
