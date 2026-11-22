@@ -1,5 +1,7 @@
 import { dedent, runFixtureTests } from './fixtures/index.ts'
 
+// Test cases for "eslint-plugin-unicorn" rules
+
 await runFixtureTests('unicorn', [
   {
     name: 'prefer-node-protocol-fail',

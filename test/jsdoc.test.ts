@@ -1,5 +1,7 @@
 import { dedent, runFixtureTests } from './fixtures/index.ts'
 
+// Test cases for the JSDoc configuration
+
 await runFixtureTests('jsdoc', [
   {
     name: 'require-jsdoc-class-fail',
